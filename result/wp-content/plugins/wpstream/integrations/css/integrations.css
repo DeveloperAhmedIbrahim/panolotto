@@ -1,0 +1,85 @@
+.wpstream-menu .item-body{
+    border: 1px solid #d6d9dd;
+    border-radius: 4px;
+    padding: 20px!important;
+    margin-bottom: 20px;
+    margin: 0px 10px 20px 10px;
+}
+
+body.wpstream-menu.buddypress .buddypress-wrap h4{
+    margin-bottom: 10px;
+    margin-top: 25px;
+}
+
+.wpstream_live_player_wrapper .vjs-controls-disabled .vjs-big-play-button, 
+.wpstream_live_player_wrapper .vjs-error .vjs-big-play-button, 
+.wpstream_live_player_wrapper .vjs-has-started .vjs-big-play-button, 
+.wpstream_live_player_wrapper .vjs-using-native-controls .vjs-big-play-button {
+    display: none;
+}
+
+
+.wpstream_live_player_wrapper .video-js .vjs-big-play-button, 
+.wpstream_player_container .video-js .vjs-big-play-button{
+    transform: none;
+    padding: 0px;
+}
+.wpstream_live_player_wrapper .vjs-error .vjs-error-display .vjs-modal-dialog-content{
+    display: none;;
+}
+.wpstream_live_player_wrapper .video-js .vjs-big-play-button:before, 
+.wpstream_player_container .video-js .vjs-big-play-button:before{
+    font-size: 57px;   
+}
+
+.wpstream_player_container button.vjs-control,
+.wpstream_player_container button.vjs-control{
+    border:none!important;
+    width: 40px;
+    height: 40px;
+}
+
+
+.activity-inner .wpstream_live_player_wrapper{
+    max-width: 715px;
+}
+
+
+body.wpstream-menu .buddypress-wrap button,
+body.wpstream-menu .vjs-wpstream .vjs-live-control {
+    font-size: 12px;
+    transition: 0.3s ease-out;
+    border: 0px;
+    padding: 0px 20px;
+    line-height: 23px;
+}
+
+body.wpstream-menu  .vjs-wpstream .vjs-live-control{
+    padding-left: 20px;
+}
+
+body.wpstream-menu 
+div.video-js .vjs-control-bar button.vjs-picture-in-picture-control .vjs-icon-placeholder:before{
+    display: none;
+}
+
+
+.video-js .vjs-volume-panel {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 44px;
+    width: 34px;
+}
+
+div.video-js .vjs-control-bar button .vjs-icon-placeholder:before,
+.vjs-wpstream .vjs-live-control {
+    line-height: 40px;
+}
+
+div.video-js .vjs-control-bar button.vjs-picture-in-picture-control .vjs-icon-placeholder:before{
+    content:"";
+}

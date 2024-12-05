@@ -1,0 +1,655 @@
+.wpstream_on_boarding_wrapper{
+    background-color: #fff;
+    position: fixed;
+    width: 500px;
+    top: 125px;
+    left: 50%;
+    margin-left: -250px;    
+    z-index: 10002;
+    display: none;
+}
+
+#wpstream_onboard_bubble{
+    position: absolute;
+    z-index: 10002;
+    background: #fff;
+    left: 175px;
+    top: -30px;
+    width: 375px;
+    display: none;
+}
+
+.boarding-left-arrow:after{
+    content: " ";
+    position: absolute;
+    top: 20%;
+    margin-top: 0px;
+    left: -12px;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 12px solid #F7F4FC;
+}
+
+.boarding-right-arrow:after{
+    content: " ";
+    position: absolute;
+    top: 20%;
+    margin-top: 0px;
+    right: -12px;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 12px solid white;
+}
+
+
+
+
+#wpstream_onboard_bubble,
+.wpstream_on_boarding_wrapper{
+    box-shadow: 8px 8px 7px 1px #0606061f;
+    padding: 20px 30px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+
+.wpstream_on_boarding_wrapper{
+    padding: 30px;
+    min-height: 60px;
+    background-color: #F7F4FC;
+
+}
+
+
+.wpstream_step_wrapper{
+    display: none;
+}
+
+.wpstream_step_wrapper h1{
+    font-size: 20px;
+    margin: 30px 0px 45px 0px;
+    color:#221466;
+    text-align: center;
+}
+
+
+.wpstream_has_credential h1{
+    margin-top: 0px;
+}
+
+.header_special {
+    color: #4e2ee6;
+}
+
+.wpstream_step_wrapper .wpstream_option{
+    width: 100%;
+    padding: 0px 0px 0px 0px;
+}
+
+.wpstream_on_board_register_wrapper,
+.wpstream_step_wrapper .wpstream_option_wrapper {
+    max-width: 100%;
+    padding: 0px 0px 0px 0px;
+    padding: 30px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    background-color: #eae8fc;
+    border: 1px solid #e8dbfc;
+}
+
+.wpstream_on_board_register_wrapper h2{
+    color:#221466;
+    margin-top: 0px;
+}
+
+.wpstream_on_board_login_wrapper_explanations{
+    margin-bottom: 35px;
+    font-size: 14px;
+    line-height: 1.6em;
+    margin-top: -20px;
+    text-align: center;
+}
+
+.wpstream_onboard_register,
+.wpstream_onboard_login{
+    width:100%;
+
+}
+
+#wpstream_onboarding_action_login,
+.wpstream_on_board_register_wrapper,
+.wpstream_on_board_login_wrapper{
+    display: none;
+}
+
+
+
+.wpstream_onboarding_notification{
+    background: #45a73f;
+    padding: 5px 10px;
+    color: #fff;
+    border-radius: 5px;
+    width: auto;
+    margin-top: 10px;
+    display: inline-block;
+    display: none;
+}
+
+.onboarding_error{
+    background: #F24B4B;
+   
+    margin-top: 0px;
+}
+
+.wpstream_onboarding_notification{
+    margin-bottom: 10px;
+}
+
+.wpstream_check_account_status{
+    font-size: 15px;
+    padding: 30px 0px;
+    font-weight: 500;
+}
+
+
+.wpstream_step_wrapper .wpstream_option input{
+    width: 100%;
+
+}
+
+#wpstream_onboarding_action_register{
+    display: none;
+}
+
+#wpstream_onboarding_action_login,
+#wpstream_onboarding_action_register{
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: underline;
+    margin-top: 10px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.wpstream_step_1{
+    display: block;
+}
+
+
+
+.wpstram_or{
+    text-align: center;
+    font-size: 14px;
+    color: #221466;
+    font-weight: 500;
+}
+
+.wpstream_warning_onboarding{
+    background: #ffe5e5;
+    border: 1px solid #ff4c4c8c;
+    color: #3b3b3b;
+    margin-bottom: 30px;
+    padding: 30px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.6;
+    border-radius: 5px;
+}
+
+
+
+.wpstream_accordion_header{
+    padding: 20px 10px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    margin: 20px 0px 20px 0px;
+    border-radius: 5px;
+    font-size: 17px;
+    text-transform: capitalize;
+    text-align: center;
+    font-weight: 500;
+    background-color: #eae8fc;
+    border: 1px solid #e8dbfc;
+    transition: 0.2s ease-out;
+    line-height: 1.4em;
+    color: #221466;
+}
+
+.wpstream_accordion_header:hover{
+    background:#4e2ee6;
+    color: #fff;
+}
+
+
+.wpstream_onboard_live{
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+.wpstream_step_wrapper label{
+    color:#221466;
+    display: block;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+
+.wpstream_accordion_container{
+    padding: 30px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    background-color: #eae8fc;
+    border: 1px solid #e8dbfc;
+}
+
+#wpstream_free_vod_file_name_for_ppv,
+#wpstream_onboarding_vod_price,
+#wpstream_onboarding_ppv_vod_name,
+#wpstream_ppv_vod_file_name,
+#wpstream_free_vod_file_name,
+#wpstream_onboarding_vod_name,
+#wpstream_onboarding_event_price_ppv,
+#wpstream_onboarding_channel_name_ppv,
+#wpstream_onboarding_channel_name{
+    border: 1px solid #d6d6d6;
+    background-color: #fff;
+    color: #2c3338;
+    padding: 5px 10px;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+#wpstream_onboarding_ppv_vod_name{
+max-width: 450px;
+}
+#editable-post-name{
+    position: relative;
+}
+
+#wpstream_free_vod_file_name_for_ppv,
+#wpstream_ppv_vod_file_name,
+#wpstream_free_vod_file_name{
+    max-width: 100%;
+    width: 100%;
+}
+
+#wpstream_on_board{
+    background-color: brown;
+    padding: 15px;
+    cursor: pointer;
+    width: auto;
+    color: #fff;
+    display: inline-block;
+    /* float: left; */
+    margin: 20px;
+}
+
+#wpstream_onboarding_view_vod,
+.wpstream_upload_video,
+.wpstream_onboarding_tryagain,
+.wpstream_install_plugin,
+.wpstream_onboard_initial_bubble_next,
+.wpstream_onboard_initial_bubble_prev,
+#wpstream_onboarding_start_chanel,
+#wpstrean_close_modal_ack,
+.wpstream_onboard_bubble_finish,
+.wpstream_onboard_bubble_prev,
+.wpstream_onboard_bubble_next{
+    cursor: pointer;
+    margin: 0px 10px 15px 0px;
+    background-color: #4e2ee6;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: 0.3s ease-out;
+    display: inline-block;
+    line-height: 1.4em;
+}
+
+.wpstream_onboarding_tryagain,
+.wpstream_install_plugin{
+    margin: 30px 0px 0px 0px;
+}
+
+
+#post-body,
+.wpstream_initial_onboarding_controls_wrapper{
+    position: relative;
+}
+
+
+#wpstream_onboarding_start_chanel{
+    display: block;
+    width: fit-content;
+    margin: 10px 0px;
+}
+
+.wpstream_onboard_initial_bubble_prev:hover,
+#wpstream_onboarding_view_vod:hover,
+.wpstream_onboarding_tryagain:hover,
+.wpstream_install_plugin:hover,
+.wpstream_onboard_bubble_finish:hover,
+#wpstrean_close_modal_ack:hover,
+.wpstream_onboard_bubble_prev:hover,
+.wpstream_onboard_bubble_next:hover{
+    background-color: #221466;
+}
+
+
+.wpstream_round_bubble{
+    text-align: center;
+}
+
+.wpstream_round_bubble li{
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: #4e2ee6;
+    display: inline-block;
+    margin-right: 10px!important;
+    opacity: 0.5;
+}
+
+
+
+.wpstream_onboard_bubble_finish{
+    display: none;
+}
+
+.wpstream_modal_background_onboard {
+    position: fixed;
+    z-index: 10001;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background-color: rgb(0 20 40 / 86%);
+    opacity: 0.7;
+    display: none;
+}
+
+.wpstream_modal_back{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    background-image: url(home-decor-lines3.png);
+    background-size: cover;
+    background-position: center;
+    opacity: 0.4;
+    z-index: -1;
+}
+
+
+
+.wpstream_modal_background_onboard2 {
+    position: fixed;
+    z-index: 1000;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background-color: rgb(0 20 40 / 86%);
+    opacity: 0.7;
+    display: none;
+}
+
+.wpstream_close_onboarding{
+    width:30px;
+    height: 30px;
+    background-color: rgba(13,110,253,0.12);
+    position: absolute;
+    top:15px;
+    right: 15px;
+    border-radius: 3px;
+    cursor: pointer;
+    background-image: url(../../img/closeicon4.png);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.wpstream_close_onboarding:hover{
+    background-color: rgba(13,110,253,0.32);
+}
+
+.wpstream_close_initial_onboarding{
+    top:30px;
+    right: 30px;
+}
+
+
+
+
+#wpstrean_close_modal_ack{
+    font-size: 14px;
+    margin-top: 20px;
+    font-weight: 400;
+    margin-bottom: 0px;
+}
+
+.wpstream_close_onboarding_warning{
+    color: #1d2327;
+    margin: 15px 0px 0px 0px;
+    display: inline-block;
+    width: 100%;
+    font-size: 15px;
+    line-height: 1.5;
+    font-weight: 500;
+}
+
+
+#wpstream_onboard_bubble_content{
+    color: #1d2327;
+    margin: 0px 0px 15px 0px;
+    display: inline-block;
+    width: 100%;
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 400;
+}
+
+
+#wpstream_onboard_bubble_content .onboard_line_break{
+    margin-bottom: 10px;
+}
+
+#wpstream_onboard_bubble_tile{
+    margin: 15px 0px 15px 0px!important;
+    line-height: 1.3em!important;
+    padding: 0px!important;
+    font-size: 17px!important;
+    color: #221466!important;
+    padding-right: 30px!important;
+    float: left;
+    font-weight: 600!important;
+}
+
+#wpstream_onboarding_start_chanel {
+    padding: 9px 20px;
+    width: auto;
+    min-width: 130px;
+    color: #7a88a3;
+    border: 1px solid #3dc93d;
+    color: #3b3b3b;
+    background-color: #eaf2f7;
+    background-color: #e8f7e8;
+    border: 1px solid #3dc93d85;
+    width: 220px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 14px;
+    text-align: center;
+}
+
+#wpstream_onboarding_start_chanel:hover{
+    background: #45a73f;
+    color: #fff;
+}
+
+.wpstream_onboard_register,
+.wpstream_onboard_login,
+#wpstream_trigger_quick_start,
+#wpstream_onboard_vod_ppv_action,
+#wpstream_onboard_vod_free_action,
+#wpstream_onboard_live_ppv_action,
+.wpstream_onboard_live_action{
+    background-color:#4e2ee6
+}
+
+.wpstream_onboard_register:hover,
+.wpstream_onboard_login:hover,
+#wpstream_trigger_quick_start:hover,
+#wpstream_onboard_vod_ppv_action:hover,
+#wpstream_onboard_vod_free_action:hover,
+#wpstream_onboard_live_ppv_action:hover,
+.wpstream_onboard_live_action:hover{
+    background-color: #221466;
+}
+
+.wpstream_sample_icon_settings{
+    width: 37px;
+    height: 37px;
+    border: 1px solid #f0f0f0;
+    border-radius: 3px;
+    display: inline-block;
+    text-align: center;
+    background-color: #f8f8f8;
+    background-image: url(settings.svg);
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    text-align: -webkit-left;
+    vertical-align: middle;
+    margin: 0px 2px;
+}
+
+.wpstream_sample_icon_camera{
+    background-image: url(camera.svg);
+
+}
+
+
+.wpstream_sample_icon_open_channel:hover,
+.wpstream_sample_icon_camera:hover{
+    background-color: #dadada;
+}
+
+
+
+.wpstream_sample_icon_open_channel{
+    background-image: url(view.svg);
+    cursor: pointer;
+}
+
+
+.wpstream_quick_start_wrapper{
+    background: #fff;
+    margin: 5px 15px 2px;
+    padding: 30px 30px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgb(0 25 60 / 8%);
+    border: 1px solid #e2e5e8;
+}
+
+.wpstream_quick_start_wrapper h1{
+    color:#221466!important;
+}
+
+.wpstream_quick_start_wrapper p{
+    max-width: 500px;
+    font-size: 15px;
+    margin: 25px 0px;
+}
+
+
+@media screen and (max-height: 850px) {
+    .wpstream_on_boarding_wrapper{
+        top: 45px;
+    }
+}
+@media screen and (max-height: 750px) {
+    .wpstream_on_boarding_wrapper {
+        width: 400px;
+        margin-left: -200px;
+    }
+
+    .wpstream_on_boarding_wrapper{
+        top:40px;
+        padding: 5px 20px;
+    }
+
+    .wpstream_onboarding_logo{
+        display: none;;
+    }
+    .wpstream_close_initial_onboarding {
+        top: 10px;
+        right: 10px;
+    }
+
+    .wpstream_has_credential h1 {
+        margin-top: 0px;
+        margin-bottom: 20px;
+        font-size: 16px;
+    }
+    .wpstream_on_board_login_wrapper_explanations {
+        margin-bottom: 10px;
+        font-size: 13px;
+    }
+    .wpstream_on_board_register_wrapper, .wpstream_step_wrapper .wpstream_option_wrapper {
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+}
+
+
+@media screen and (max-height: 550px) {
+   
+    .wpstream_on_board_register_wrapper, .wpstream_step_wrapper .wpstream_option_wrapper {
+        padding: 5px;
+    }
+    .wpstream_option{
+        margin-bottom: 10px;
+    }
+    .wpstream_option input {
+        padding: 0px 10px;
+    }
+    .wpstream_step_wrapper h1 {
+        font-size: 14px;
+        margin: 15px 0px 15px 0px;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    
+    .wpstream_on_boarding_wrapper {
+        position: fixed;
+        width: 100%;
+        top: 0px;
+        margin-left: 0px;
+        z-index: 10002;
+        height: 100%;
+        left: 0px;
+        right: 0px;
+        padding: 55px 25px;
+        display: inline-block;
+        box-sizing: border-box;
+    }
+    .wpstream_close_initial_onboarding {
+        top: 50px;
+        right: 10px;
+    }
+    #wpstream_onboarding_action_login, #wpstream_onboarding_action_register {
+        text-align: center;
+    }
+
+    #wpstream_onboarding_ppv_vod_name{
+        max-width: 100%;
+    }
+
+}
