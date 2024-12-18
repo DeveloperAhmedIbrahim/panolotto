@@ -207,12 +207,10 @@ class LotteryController extends Controller
             'winning.*.lottery_id'  => 'required|integer',
             'winning.*.power_ball'  => 'required|integer',
             'winning.*.normal_ball' => 'required|integer',
-            'winning.*.win_times'   => 'required|numeric|gte:0',
             'winning.*.prize_money' => 'required|numeric|gte:0',
         ], [
             'winning.*.lottery_id.power_ball'  => 'The no of power ball field is required',
             'winning.*.lottery_id.normal_ball' => 'The no of normal ball field is required',
-            'winning.*.lottery_id.win_times'   => 'The win times field is required',
             'winning.*.lottery_id.prize_money' => 'The prize money field is required',
         ]);
 
@@ -226,6 +224,7 @@ class LotteryController extends Controller
             else
             {
                 $value["status"] = 0;
+                $value["win_times"] = 0;
             }
             $winnings[$key] = $value;
         }

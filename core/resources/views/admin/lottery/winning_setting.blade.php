@@ -50,7 +50,7 @@
                                         <div class="form-group">
                                             <div class="form-group">
                                                 <label>@lang('Price On/Off')</label>
-                                                <input type="checkbox" data-width="100%" data-height="50" data-onstyle="-success" data-offstyle="-danger" data-bs-toggle="toggle" data-on="@lang('Enable')" data-off="@lang('Disabled')" @if($winningSetting && $winningSetting->status === 1) checked @endif name="winning[{{ $key }}][status]">
+                                                <input type="checkbox" data-width="100%" data-height="50" data-onstyle="-success" data-offstyle="-danger" data-bs-toggle="toggle" data-on="@lang('Enable')" data-off="@lang('Disabled')" @if($winningSetting && $winningSetting->status === 1) checked @endif name="winning[{{ $key }}][status]" onchange="winTimesOnOff({{ $key }})">
                                             </div>
                                         </div>
                                     </div>
@@ -78,5 +78,26 @@
                 $(this).parents('.parent').find('.total_amount').val($(this).val() * price);
             });
         })(jQuery);
+
+        let winTimesCount = document.querySelectorAll('.win_times');
+        if(winTimesCount !== undefined)
+        {
+            for(let i = 0; i < winTimesCount.length; i++)
+            {
+                winTimesOnOff(i)
+            }
+        }
+
+
+        function winTimesOnOff(index) {
+            let status = document.querySelector(`input[name="winning[${index}][status]"]`).checked;
+            if(status) {
+                document.querySelector(`input[name="winning[${index}][win_times]"]`).setAttribute("required", true);
+                document.querySelector(`input[name="winning[${index}][win_times]"]`).setAttribute("min", 1);
+            } else {
+                document.querySelector(`input[name="winning[${index}][win_times]"]`).removeAttribute("required");
+                document.querySelector(`input[name="winning[${index}][win_times]"]`).removeAttribute("min");
+            }
+        }
     </script>
 @endpush
