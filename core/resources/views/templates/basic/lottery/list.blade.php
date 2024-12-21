@@ -1,4 +1,13 @@
 @extends($activeTemplate . 'layouts.frontend')
+<section class="inner-hero overlay--one">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 text-center">
+                <h2 class="page-title text-white">All Lotteries</h2>
+            </div>
+        </div>
+    </div>
+</section>
 @section('content')
     <div class="py-70">
         <div class="container">

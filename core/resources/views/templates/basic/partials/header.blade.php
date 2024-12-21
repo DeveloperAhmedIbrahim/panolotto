@@ -12,11 +12,14 @@
                         <a class="nav-link {{ menuActive('home') }}" href="{{ route('home') }}">@lang('Home')</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ menuActive('lottery.tickets') }}" href="{{ route('lottery.tickets') }}">@lang('Lotteries')</a>
+                        <a class="nav-link" target="_blank" href="https://result.panolotto.com/wpstream/panolotto-result">@lang('Live Draw')</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ menuActive('results') }}" href="{{ route('results') }}">@lang('Results')</a>
+                        <a class="nav-link {{ menuActive('lottery.tickets') }}" href="{{ route('lottery.tickets') }}">@lang('Lotteries')</a>
                     </li>
+                    {{-- <li class="nav-item">
+                        <a class="nav-link {{ menuActive('results') }}" href="{{ route('results') }}">@lang('Results')</a>
+                    </li> --}}
                     @php
                         $pages = App\Models\Page::where('is_default', Status::NO)
                             ->where('tempname', $activeTemplate)
@@ -29,12 +32,12 @@
                         </li>
                     @endforeach
 
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link {{ menuActive('blogs') }}" href="{{ route('blogs') }}">@lang('Blog')</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ menuActive('faqs') }}" href="{{ route('faqs') }}">@lang('FAQs')</a>
-                    </li>
+                    </li> --}}
                     <li class="nav-item">
                         <a class="nav-link {{ menuActive('contact') }}" href="{{ route('contact') }}">@lang('Contact')</a>
                     </li>

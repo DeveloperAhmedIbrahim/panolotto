@@ -11,6 +11,47 @@
 <footer class="footer-area">
     <div class="footer-area__style">
         <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-6 footer-quick-links">
+                    <h4>Useful Links</h4>
+                    <ul class="">
+                        <li><a class="" href="{{ url('/') }}">Home</a></li>
+                        <li><a class="" href="{{ url('about') }}">About</a></li>
+                        <li><a class="" href="{{ url('lottery-tickets') }}">Lotteries</a></li>
+                        <li><a class="" href="{{ url('faq') }}">FAQ</a></li>
+                        <li><a class="" href="{{ url('contact') }}">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-3 col-6 footer-account">
+                   <h4>Account</h4>
+                    <ul class="">
+                        <li><a class="" href="{{ url('user/login') }}">Login</a></li>
+                        <li><a class="" href="{{ url('user/register') }}">Register</a></li>
+                        <li><a href="{{ url('user/password/reset') }}">Forgot Password</a></li>
+                    </ul>
+                  </div>
+                <div class="col-lg-3 col-md-3 col-5 footer-legals">
+                    <h4>Legals</h4>
+                    <ul class="">
+                        <li><a href="http://localhost/PanolottoOld/policy/privacy-policy?42">Privacy Policy</a></li>
+                        <li><a href="http://localhost/PanolottoOld/policy/terms-of-service?43">Terms of Service</a></li>
+                        <li><a href="http://localhost/PanolottoOld/policy/rules-of-play?95">Rules of Play</a></li>
+                        <li><a href="http://localhost/PanolottoOld/policy/disclaimer?96">Disclaimer</a></li>
+                    </ul>
+                </div>
+                <div class="ccol-lg-3 col-md-3 col-7 footer-legals">
+                    <h4>Talk To Us</h4>
+                    <ul class="">
+                        <li><a href="mailto:support@panolotto.com">support@panolotto.com</a></li>
+                        <li><a href="tel:+1231234343">+44800 238 2939</a></li>
+                    </ul>
+                    <ul class="inline-social-links d-flex mt-3">
+                        <li><a href="https://x.com/PanolottoPals" target="_blank"><i class="fas fa-times"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {{-- <div class="container">
             <div class="row justify-content-center gy-5">
                 <div class="col-xl-6 col-sm-6">
                     <div class="footer-item">
@@ -95,13 +136,28 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
     <!-- Footer Top End-->
 
     <!-- bottom Footer -->
     <div class="bottom-footer">
         <div class="container">
+            <div class="footer-bottom">
+                <div class="row align-items-center">
+                    <div class="col-md-6 mt-md-0">
+                        <a class="footer-logo" href="{{ url('/') }}"><img src="{{ url('assets/images/logo_icon/logo.png') }}" alt="image" style="max-height: 75px;"></a>
+                    </div>
+                    <div class="col-md-6 text-md-end text-center">
+                        <span class="footer-content__left-text">
+                            Copyright © 2024, All Right Reserved By Panolotto
+                            <a class="text--base" href="{{ url('/') }}">.</a>
+                        </span>
+                    </div>
+                 </div>
+            </div>
+        </div>
+        {{-- <div class="container">
             <div class="bottom-footer__style py-3">
                 <div class="row gy-3">
                     <div class="col-md-6">
@@ -118,6 +174,6 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
 </footer>

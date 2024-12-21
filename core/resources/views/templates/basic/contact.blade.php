@@ -1,4 +1,13 @@
 @extends($activeTemplate . 'layouts.frontend')
+<section class="inner-hero overlay--one">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 text-center">
+                <h2 class="page-title text-white">Contact Us</h2>
+            </div>
+        </div>
+    </div>
+</section>
 @php
     $content     = getContent('contact_us.content', true);
     $elements    = getContent('contact_us.element', orderById: true);
