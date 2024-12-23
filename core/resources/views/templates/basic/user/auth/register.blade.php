@@ -25,9 +25,11 @@
                     </div>
                 </div>
                 <div class="account-right-wrapper">
-                    <a class="account-right-wrapper__logo" href="{{ route('home') }}">
-                        <img alt="" src="{{ siteLogo('dark') }}">
-                    </a>
+                    <div class="w-100 text-center">
+                        <a class="account-right-wrapper__logo" href="{{ route('home') }}">
+                            <img alt="" src="{{ siteLogo('dark') }}">
+                        </a>
+                    </div>
                     <div class="account-right signup">
                         <div class="account-content">
                             <div class="account-form">

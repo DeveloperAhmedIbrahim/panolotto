@@ -22,9 +22,11 @@
                 </div>
             </div>
             <div class="account-right-wrapper">
-                <a class="account-right-wrapper__logo" href="{{ route('home') }}">
-                    <img alt="" src="{{ getImage(getFilePath('logoIcon') . '/logo_dark.png') }}">
-                </a>
+                <div class="w-100 text-center">
+                    <a class="account-right-wrapper__logo" href="{{ route('home') }}">
+                        <img alt="" src="{{ getImage(getFilePath('logoIcon') . '/logo_dark.png') }}">
+                    </a>
+                </div>
                 <div class="account-right">
                     <div class="account-content">
                         <div class="account-form">

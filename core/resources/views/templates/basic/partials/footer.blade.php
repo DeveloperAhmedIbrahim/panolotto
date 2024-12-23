@@ -146,7 +146,9 @@
             <div class="footer-bottom">
                 <div class="row align-items-center">
                     <div class="col-md-6 mt-md-0">
-                        <a class="footer-logo" href="{{ url('/') }}"><img src="{{ url('assets/images/logo_icon/logo.png') }}" alt="image" style="max-height: 75px;"></a>
+                        <a class="footer-logo" href="{{ url('/') }}">
+                            <img src="{{ url('assets/images/logo_icon/logo.png') }}" alt="image" style="max-height: 75px;" class="pb-3">
+                        </a>
                     </div>
                     <div class="col-md-6 text-md-end text-center">
                         <span class="footer-content__left-text">

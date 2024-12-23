@@ -2448,6 +2448,28 @@ input[type=number] {
     }
 }
 
+.header .nav-menu .nav-item .nav-link {
+    padding: 5px 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.header.fixed-header .nav-menu .nav-item .nav-link.active{
+    background-color: transparent;
+}
+
+.header .nav-menu .nav-item .nav-link:hover{
+    background-color: transparent;
+}
+
+.header .nav-menu .nav-item .nav-link.active {
+    background-color: white;
+}
+
+.header .nav-menu .nav-item .nav-link:hover {
+    background-color: white;
+}
+
 @media (min-width: 992px) {
     .nav-menu .nav-item .nav-link {
         font-weight: 500;
@@ -2524,6 +2546,10 @@ input[type=number] {
 
     .nav-item .nav-link::before {
         display: none;
+    }
+
+    .nav-item .nav-link.active {
+        background-color: transparent !important;
     }
 }
 
@@ -4588,7 +4614,6 @@ input[type=number] {
 
 .account-right-wrapper__logo {
     max-width: 200px;
-    margin-left: 100px;
 }
 
 @media screen and (max-width: 991px) {
