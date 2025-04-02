@@ -2355,8 +2355,8 @@ input[type=number] {
 }
 
 .navbar-brand.logo img {
-    max-width: 170px;
-    max-height: 60px;
+    max-width: 180px;
+    max-height: 70px;
 }
 
 @media screen and (max-width: 1199px) {
@@ -2372,6 +2372,8 @@ input[type=number] {
     top: 0;
     left: 0;
     right: 0;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
 @media screen and (max-width: 991px) {
@@ -6317,4 +6319,14 @@ label.required:after {
 
 .inline-social-links li {
     padding: .1875rem .4375rem;
+}
+
+.btn-auth, .btn--base.outline.btn-auth{
+    border: 2px solid white !important;
+}
+
+.btn-auth:hover, .btn-auth.btn--base.outline:hover{
+    border: 2px solid white !important;
+    color: white !important;
+
 }

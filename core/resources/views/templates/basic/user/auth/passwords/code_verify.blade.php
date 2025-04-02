@@ -1,6 +1,11 @@
 @extends($activeTemplate . 'layouts.frontend')
 @section('content')
-    <div class="section-bg py-80">
+    <style>
+        .header {
+            background-color: #1F1F1F !important;
+        }
+    </style>
+    <div class="section-bg py-80 mt-5">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8 col-lg-7 col-xl-5">

@@ -45,11 +45,11 @@
                 <div class="top-button flex-between">
                     <ul class="login-registration-list flex-align">
                         @guest
-                            <li class="login-registration-list__item"><a class=" btn btn--base btn--sm outline" href="{{ route('user.login') }}">@lang('Login')</a></li>
-                            <li class="login-registration-list__item"><a class="btn btn--base btn--sm" href="{{ route('user.register') }}">@lang('Register')</a></li>
+                            <li class="login-registration-list__item"><a class=" btn btn--base btn--sm outline btn-auth" href="{{ route('user.login') }}">@lang('Login')</a></li>
+                            <li class="login-registration-list__item"><a class="btn btn--base btn--sm btn-auth" href="{{ route('user.register') }}">@lang('Register')</a></li>
                         @else
-                            <li class="login-registration-list__item"><a class=" btn btn--base btn--sm outline" href="{{ route('user.home') }}">@lang('Dashboard')</a></li>
-                            <li class="login-registration-list__item"><a class="btn btn--base btn--sm" href="{{ route('user.logout') }}">@lang('Logout')</a></li>
+                            <li class="login-registration-list__item"><a class=" btn btn--base btn--sm outline btn-auth" href="{{ route('user.home') }}">@lang('Dashboard')</a></li>
+                            <li class="login-registration-list__item"><a class="btn btn--base btn--sm btn-auth" href="{{ route('user.logout') }}">@lang('Logout')</a></li>
                         @endguest
                     </ul>
                     @if (gs()->multi_language)
