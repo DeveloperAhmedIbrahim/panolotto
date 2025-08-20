@@ -29,7 +29,7 @@ class ProcessController extends Controller {
             $send['message'] = 'Some problem ocurred with api.';
             return json_encode($send);
         }
-        if(!@$response->status){
+        if(!@$response->payment_status){
             $send['error']   = true;
             $send['message'] = 'Invalid api key';
             return json_encode($send);

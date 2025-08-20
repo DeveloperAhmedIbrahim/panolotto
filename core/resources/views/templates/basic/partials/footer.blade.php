@@ -16,9 +16,8 @@
                     <h4>Useful Links</h4>
                     <ul class="">
                         <li><a class="" href="{{ url('/') }}">Home</a></li>
-                        <li><a class="" href="{{ url('about') }}">About</a></li>
                         <li><a class="" href="{{ url('lottery-tickets') }}">Lotteries</a></li>
-                        <li><a class="" href="{{ url('faq') }}">FAQ</a></li>
+                        <li><a class="" href="{{ url('faqs') }}">FAQ</a></li>
                         <li><a class="" href="{{ url('contact') }}">Contact</a></li>
                     </ul>
                 </div>
@@ -33,17 +32,15 @@
                 <div class="col-lg-3 col-md-3 col-5 footer-legals">
                     <h4>Legals</h4>
                     <ul class="">
-                        <li><a href="http://localhost/PanolottoOld/policy/privacy-policy?42">Privacy Policy</a></li>
-                        <li><a href="http://localhost/PanolottoOld/policy/terms-of-service?43">Terms of Service</a></li>
-                        <li><a href="http://localhost/PanolottoOld/policy/rules-of-play?95">Rules of Play</a></li>
-                        <li><a href="http://localhost/PanolottoOld/policy/disclaimer?96">Disclaimer</a></li>
+                        <li><a href="{{ url('/policy/privacy-policy') }}">Privacy Policy</a></li>
+                        <li><a href="{{ url('/policy/terms-of-service') }}">Terms of Service</a></li>
+                        <li><a href="{{ url('/policy/game-policy') }}">Game Policy</a></li>
                     </ul>
                 </div>
                 <div class="ccol-lg-3 col-md-3 col-7 footer-legals">
                     <h4>Talk To Us</h4>
                     <ul class="">
-                        <li><a href="mailto:support@panolotto.com">support@panolotto.com</a></li>
-                        <li><a href="tel:+1231234343">+44800 238 2939</a></li>
+                        <li><a href="mailto:info@panolotto.com">info@panolotto.com</a></li>
                     </ul>
                     <ul class="inline-social-links d-flex mt-3">
                         <li><a href="https://x.com/PanolottoPals" target="_blank"><i class="fas fa-times"></i></a></li>
@@ -152,7 +149,7 @@
                     </div>
                     <div class="col-md-6 text-md-end text-center">
                         <span class="footer-content__left-text">
-                            Copyright © 2024, All Right Reserved By Panolotto
+                            Copyright © 2025, All Right Reserved By Panolotto
                             <a class="text--base" href="{{ url('/') }}">.</a>
                         </span>
                     </div>

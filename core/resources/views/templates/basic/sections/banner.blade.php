@@ -14,7 +14,28 @@
                     <div class="banner-thumb d-none">
                         {{-- <img alt="" src="{{ getImage('assets/images/frontend/banner/'.@$content->data_values->image, '825x680') }}"> --}}
                     </div>
-                    <p class="banner-content__desc">{{ __(@$content->data_values->subheading) }}</p>
+                    <p class="banner-content__desc mt-0">{{ __(@$content->data_values->subheading) }}</p>
+                    <input type="hidden" id="counterDateTime" value="{{ $heroCounter->datetime }}">
+                    <div class="banner-content__button d-flex align-items-start text-light flex-column mt-0">
+                        <div class="fs-1"><b>XRP{{ $heroCounter->price }}M</b></div>
+                        <div class="fs-6">Panolotto lets the good times roll.</div>
+                    </div>
+                    <div class="banner-content__button d-flex align-items-center gap-3 text-light">
+                        <div class="p-3 py-2 bg-dark border-2 border-light rounded-2 text-center">
+                            <div class="fs-5 fw-bold" id="counterDays">02</div>
+                            <div class="fs-6 fw-thin" style="font-size: 14px !important;">Days</div>
+                        </div>
+                        <span><i class="fas fa-ellipsis-v"></i></span>
+                        <div class="p-3 py-2 bg-dark border-2 border-light rounded-2 text-center">
+                            <div class="fs-5 fw-bold" id="counterHours">04</div>
+                            <div class="fs-6 fw-thin" style="font-size: 14px !important;">Hours</div>
+                        </div>
+                        <span><i class="fas fa-ellipsis-v"></i></span>
+                        <div class="p-3 py-2 bg-dark border-2 border-light rounded-2 text-center">
+                            <div class="fs-5 fw-bold" id="counterMints">23</div>
+                            <div class="fs-6 fw-thin" style="font-size: 14px !important;">Mints</div>
+                        </div>
+                    </div>
                     <div class="banner-content__button d-flex align-items-center gap-3">
                         <a class="btn btn--white" href="{{@$content->data_values->button_url }}">{{ __(@$content->data_values->button_text) }}</a>
                     </div>
@@ -76,5 +97,58 @@
     </div>
 </div>
 
-{{-- <section>
-</section> --}}
+<script>
+// Target date from the database (YYYY-MM-DD HH:MM:SS)
+const targetDate = document.getElementById("counterDateTime").value;
+
+// Function to start the countdown
+function startCounter() {
+    // Get the HTML element where the countdown will be displayed
+    const counterDays = document.getElementById("counterDays");
+    const counterHours = document.getElementById("counterHours");
+    const counterMints = document.getElementById("counterMints");
+
+    // Function to update the countdown every second
+    const updateCounter = () => {
+        // Parse the target date into a JavaScript Date object
+        const targetTime = new Date(targetDate).getTime();
+        // Get the current time
+        const currentTime = new Date().getTime();
+        // Calculate the time difference in milliseconds
+        const timeDifference = targetTime - currentTime;
+        // If the target time has passed, display a message and stop the timer
+        if (timeDifference <= 0) {
+            clearInterval(counterInterval);
+            counterDays.innerHTML = "00";
+            counterHours.innerHTML = "00";
+            counterMints.innerHTML = "00";
+            return;
+        }
+
+        // Calculate days, hours, minutes, and seconds
+        const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+        // Add leading zeros for single-digit numbers
+        const formattedDays = String(days).padStart(2, "0");
+        const formattedHours = String(hours).padStart(2, "0");
+        const formattedMinutes = String(minutes).padStart(2, "0");
+        const formattedSeconds = String(seconds).padStart(2, "0");
+
+        // Update the countdown display
+        counterDays.innerHTML = formattedDays;
+        counterHours.innerHTML = formattedHours;
+        counterMints.innerHTML = formattedMinutes;
+    };
+
+    // Update the countdown immediately
+    updateCounter();
+    // Set an interval to update the countdown every second (1000 milliseconds)
+    const counterInterval = setInterval(updateCounter, 1000);
+}
+
+// Start the countdown when the page loads
+startCounter();
+</script>
