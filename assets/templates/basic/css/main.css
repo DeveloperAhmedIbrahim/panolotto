@@ -3145,7 +3145,7 @@ input[type=number] {
     padding: 120px 0 60px 0;
     overflow: hidden;
     width: 100%;
-    height: 88vh;
+    height: 110vh;
     background: var(--base-gradient);
     background-image: url('../images/shapes/hero-backgroung.png');
     background-size: cover;

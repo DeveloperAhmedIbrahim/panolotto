@@ -6,6 +6,7 @@ use App\Constants\Status;
 use App\Models\AdminNotification;
 use App\Models\CoinRequest;
 use App\Models\Frontend;
+use App\Models\HeroCounter;
 use App\Models\Language;
 use App\Models\Lottery;
 use App\Models\Page;
@@ -30,7 +31,8 @@ class SiteController extends Controller
         $sections    = Page::where('tempname', activeTemplate())->where('slug', '/')->first();
         $seoContents = $sections->seo_content;
         $seoImage    = @$seoContents->image ? getImage(getFilePath('seo') . '/' . @$seoContents->image, getFileSize('seo')) : null;
-        return view('Template::home', compact('pageTitle', 'sections', 'seoContents', 'seoImage'));
+        $heroCounter = HeroCounter::first();
+        return view('Template::home', compact('pageTitle', 'sections', 'seoContents', 'seoImage', 'heroCounter'));
     }
 
     public function lotteryTickets()
