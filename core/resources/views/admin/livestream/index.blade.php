@@ -40,13 +40,22 @@
             margin: 20px 0;
             border: 1px solid #ccc;
         }
-
         .recording-item {
             padding: 15px;
             margin: 10px 0;
             border: 1px solid #ddd;
             border-radius: 4px;
             background: white;
+        }
+        .audio-controls {
+            margin: 10px 0;
+            padding: 10px;
+            background: #e9ecef;
+            border-radius: 4px;
+        }
+        .audio-controls label {
+            margin-right: 15px;
+            font-weight: bold;
         }
     </style>
     <div class="recording-container">
@@ -66,12 +75,23 @@
                 </select>
             </div>
         </div>
+
+        <!-- Audio Settings -->
+        <div class="audio-controls">
+            <label>
+                <input type="checkbox" id="includeMicrophone" checked> Include Microphone Audio
+            </label>
+            <label>
+                <input type="checkbox" id="includeSystemAudio" checked> Include System Audio
+            </label>
+        </div>
+
         <div id="uploadStatus" style="margin-top: 20px;"></div>
         <video id="preview" class="preview-video" controls style="display: none;"></video>
     </div>    
     <div class="row">
         <div class="col-lg-12">
-            <div class="card  ">
+            <div class="card">
                 <div class="card-body p-0">
                     <div id="zegoContainer"></div>
                     <input type="hidden" name="username" id="username" value="Panolotto Admin" />
@@ -83,7 +103,9 @@
     <script>
         let mediaRecorder;
         let recordedChunks = [];
-        let stream;
+        let screenStream;
+        let microphoneStream;
+        let combinedStream;
         let phase = '';
 
         const startBtn = document.getElementById('startBtn');
@@ -100,7 +122,6 @@
 
         async function startRecording() {
             try {
-
                 let confirmStart = confirm("Screen recording will start. Please select the screen/window to share.");
                 if (!confirmStart) return;
 
@@ -110,19 +131,65 @@
                     return;
                 }
 
-                // Request screen capture
-                stream = await navigator.mediaDevices.getDisplayMedia({
+                const includeMicrophone = document.getElementById('includeMicrophone').checked;
+                const includeSystemAudio = document.getElementById('includeSystemAudio').checked;
+
+                // Start with screen capture
+                screenStream = await navigator.mediaDevices.getDisplayMedia({
                     video: {
                         mediaSource: 'screen',
                         width: { ideal: 1920 },
                         height: { ideal: 1080 }
                     },
-                    audio: true // Include system audio if available
+                    audio: includeSystemAudio // System audio from screen
                 });
 
-                // Create MediaRecorder
-                mediaRecorder = new MediaRecorder(stream, {
-                    mimeType: 'video/webm;codecs=vp9'
+                // Get microphone audio if requested
+                if (includeMicrophone) {
+                    try {
+                        microphoneStream = await navigator.mediaDevices.getUserMedia({
+                            audio: {
+                                echoCancellation: true,
+                                noiseSuppression: true,
+                                sampleRate: 44100
+                            }
+                        });
+                    } catch (err) {
+                        console.warn('Microphone access denied:', err);
+                        alert('Microphone access denied. Recording without microphone audio.');
+                    }
+                }
+
+                // Combine audio tracks
+                combinedStream = new MediaStream();
+                
+                // Add video track from screen
+                screenStream.getVideoTracks().forEach(track => {
+                    combinedStream.addTrack(track);
+                });
+
+                // Add audio tracks
+                if (includeSystemAudio && screenStream.getAudioTracks().length > 0) {
+                    screenStream.getAudioTracks().forEach(track => {
+                        combinedStream.addTrack(track);
+                    });
+                }
+
+                if (microphoneStream && microphoneStream.getAudioTracks().length > 0) {
+                    microphoneStream.getAudioTracks().forEach(track => {
+                        combinedStream.addTrack(track);
+                    });
+                }
+
+                // If we have multiple audio tracks, we need to mix them
+                if ((includeSystemAudio && screenStream.getAudioTracks().length > 0) && 
+                    (microphoneStream && microphoneStream.getAudioTracks().length > 0)) {
+                    combinedStream = await mixAudioStreams(screenStream, microphoneStream);
+                }
+
+                // Create MediaRecorder with combined stream
+                mediaRecorder = new MediaRecorder(combinedStream, {
+                    mimeType: 'video/webm;codecs=vp9,opus'
                 });
 
                 recordedChunks = [];
@@ -146,7 +213,7 @@
                 status.style.display = 'block';
 
                 // Handle stream ending (user stops sharing)
-                stream.getVideoTracks()[0].onended = () => {
+                screenStream.getVideoTracks()[0].onended = () => {
                     if (mediaRecorder && mediaRecorder.state === 'recording') {
                         stopRecording();
                     }
@@ -158,12 +225,57 @@
             }
         }
 
+        async function mixAudioStreams(screenStream, micStream) {
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const destination = audioContext.createMediaStreamDestination();
+
+            // Create audio sources
+            if (screenStream.getAudioTracks().length > 0) {
+                const screenAudioSource = audioContext.createMediaStreamSource(screenStream);
+                const screenGain = audioContext.createGain();
+                screenGain.gain.value = 0.7; // Reduce system audio volume slightly
+                screenAudioSource.connect(screenGain);
+                screenGain.connect(destination);
+            }
+
+            if (micStream.getAudioTracks().length > 0) {
+                const micAudioSource = audioContext.createMediaStreamSource(micStream);
+                const micGain = audioContext.createGain();
+                micGain.gain.value = 1.0; // Keep microphone at full volume
+                micAudioSource.connect(micGain);
+                micGain.connect(destination);
+            }
+
+            // Create combined stream with video from screen and mixed audio
+            const combinedStream = new MediaStream();
+            
+            // Add video track
+            screenStream.getVideoTracks().forEach(track => {
+                combinedStream.addTrack(track);
+            });
+
+            // Add mixed audio track
+            destination.stream.getAudioTracks().forEach(track => {
+                combinedStream.addTrack(track);
+            });
+
+            return combinedStream;
+        }
+
         function stopRecording() {
             if (mediaRecorder && mediaRecorder.state === 'recording') {
                 mediaRecorder.stop();
                 
                 // Stop all tracks
-                stream.getTracks().forEach(track => track.stop());
+                if (screenStream) {
+                    screenStream.getTracks().forEach(track => track.stop());
+                }
+                if (microphoneStream) {
+                    microphoneStream.getTracks().forEach(track => track.stop());
+                }
+                if (combinedStream) {
+                    combinedStream.getTracks().forEach(track => track.stop());
+                }
                 
                 // Update UI
                 startBtn.disabled = false;
@@ -210,7 +322,7 @@
 
                 if (result.success) {
                     uploadStatus.innerHTML = `<div class="alert alert-success alert-dismissible fade show p-3" role="alert">
-                        <strong>Uploaded!</strong> &nbsp; Recording saved sucessfully.
+                        <strong>Uploaded!</strong> &nbsp; Recording saved successfully.
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>`;
                 } else {
@@ -223,5 +335,18 @@
 
             status.style.display = 'none';
         }
+
+        // Test microphone access on page load
+        document.addEventListener('DOMContentLoaded', async function() {
+            try {
+                const testStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                testStream.getTracks().forEach(track => track.stop());
+                console.log('Microphone access available');
+            } catch (err) {
+                console.warn('Microphone not available:', err);
+                document.getElementById('includeMicrophone').disabled = true;
+                document.getElementById('includeMicrophone').checked = false;
+            }
+        });
     </script>
 @endsection
