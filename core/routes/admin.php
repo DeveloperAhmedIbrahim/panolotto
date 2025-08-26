@@ -156,6 +156,15 @@ Route::middleware('admin')->group(function () {
         Route::post('approve/{id}', 'approve')->name('approve');
     });
 
+    // LIVE STREAM
+    Route::controller('LiveStreamController')->prefix('live-stream')->name('livestream.')->group(function () {
+        Route::get('new', 'index')->name('new');
+        Route::get('stream', 'stream')->name('stream');
+        Route::get('list', 'list')->name('list');
+        Route::post('upload', 'upload')->name('upload');
+    });
+
+
     // WITHDRAW SYSTEM
     Route::name('withdraw.')->prefix('payout')->group(function () {
 

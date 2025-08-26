@@ -12,9 +12,6 @@
                         <a class="nav-link {{ menuActive('home') }}" href="{{ route('home') }}">@lang('Home')</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" target="_blank" href="https://result.panolotto.com/wpstream/panolotto-result">@lang('Live Draw')</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link {{ menuActive('lottery.tickets') }}" href="{{ route('lottery.tickets') }}">@lang('Lotteries')</a>
                     </li>
                     {{-- <li class="nav-item">

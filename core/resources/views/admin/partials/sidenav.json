@@ -328,6 +328,27 @@
             }
         ]
     },
+    "live-streams" : {
+        "title": "Live Streams",
+        "icon": "la la-video",
+        "menu_active": "admin.livestream*",
+        "submenu": [
+            {
+                "title": "New Stream",
+                "route_name": "admin.livestream.new",
+                "menu_active": [
+                    "admin.livestream.new"
+                ]
+            },
+            {
+                "title": "All Streams",
+                "route_name": "admin.livestream.list",
+                "menu_active": [
+                    "admin.livestream.list"
+                ]
+            }
+        ]
+    },
     "withdrawals": {
         "title": "Withdrawals",
         "icon": "la la-bank",

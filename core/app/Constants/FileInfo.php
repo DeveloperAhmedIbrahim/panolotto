@@ -83,6 +83,9 @@ class FileInfo {
         $data['pushConfig'] = [
             'path' => 'assets/admin',
         ];
+        $data['recordings'] = [
+            'path' => 'assets/recordings',
+        ];
 
         return $data;
     }

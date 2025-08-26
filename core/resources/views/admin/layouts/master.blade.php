@@ -39,6 +39,7 @@
 <script src="{{ asset('assets/global/js/nicEdit.js') }}"></script>
 
 <script src="{{asset('assets/global/js/select2.min.js')}}"></script>
+<script src="https://unpkg.com/@zegocloud/zego-uikit-prebuilt/zego-uikit-prebuilt.js"></script>
 <script src="{{asset('assets/admin/js/app.js')}}"></script>
 
 {{-- LOAD NIC EDIT --}}
