@@ -18,8 +18,9 @@
     <link href="{{ asset($activeTemplateTrue . 'css/main.css') }}" rel="stylesheet">
     @stack('style-lib')
     @stack('style')
-    <link href="{{ asset($activeTemplateTrue . 'css/color.php') }}?base_color={{ gs()->base_color }}&secondary_color={{ gs()->secondary_color }}"
-          rel="stylesheet" type="text/css">
+    <link
+        href="{{ asset($activeTemplateTrue . 'css/color.php') }}?base_color={{ gs()->base_color }}&secondary_color={{ gs()->secondary_color }}"
+        rel="stylesheet" type="text/css">
 </head>
 
 @php echo  loadExtension('google-analytics') @endphp
@@ -35,7 +36,11 @@
 
     @yield('panel')
 
-    @if (!request()->routeIs('user.login') && !request()->routeIs('user.register') && gs('request_for_coin') && !gs('maintenance_mode'))
+    @if (
+        !request()->routeIs('user.login') &&
+            !request()->routeIs('user.register') &&
+            gs('request_for_coin') &&
+            !gs('maintenance_mode'))
         @include($activeTemplate . 'partials.request_coin')
     @endif
 
@@ -61,72 +66,47 @@
 
     <script src="https://unpkg.com/@zegocloud/zego-uikit-prebuilt/zego-uikit-prebuilt.js"></script>
     <script>
-    const zegoContainer = document.querySelector("#zegoContainer");
+        const zegoContainer = document.querySelector("#zegoContainer");
 
-    if(zegoContainer !== null && zegoContainer !== undefined){
-    function getUrlParams(url) {
-        let urlStr = url.split("?")[1];
-        const urlSearchParams = new URLSearchParams(urlStr);
-        const result = Object.fromEntries(urlSearchParams.entries());
-        return result;
-    }
-    
-    // Generate a Token by calling a method.
-    // @param 1: appID
-    // @param 2: serverSecret
-    // @param 3: Room ID
-    // @param 4: User ID
-    // @param 5: Username
-    const roomID = getUrlParams(window.location.href)["roomID"] || Math.floor(Math.random() * 10000) + "";
-    const userID = Math.floor(Math.random() * 10000) + "";
-    let userName = document.querySelector("#username");
-    if(userName !== null && userName !== undefined){
-        userName = userName.value;
-    } else {
-        userName = "User " + userID;
-    }
-    const appID = 783603126;
-    const serverSecret = "4da40d4a15b2d3c3da3ec3e5ca4bb301";
-    const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(
-        appID,
-        serverSecret,
-        roomID,
-        userID,
-        userName
-    );
-    
-    // You can assign different roles based on url parameters.
-    let role = getUrlParams(window.location.href)["role"] || "Host";
-    role = role === "Host" ? ZegoUIKitPrebuilt.Host : ZegoUIKitPrebuilt.Audience;
-    let config = {};
-    if (role === "Host") {
-        config = {
-        turnOnCameraWhenJoining: true,
-        showMyCameraToggleButton: true,
-        showAudioVideoSettingsButton: true,
-        showScreenSharingButton: true,
-        showTextChat: true,
-        showUserList: true,
-        };
-    }
-    const zp = ZegoUIKitPrebuilt.create(kitToken);
-    zp.joinRoom({
-        container: document.querySelector("#zegoContainer"),
-        scenario: {
-            mode: ZegoUIKitPrebuilt.LiveStreaming,
-            config: {
-                role,
-            },
-        },
-        sharedLinks: [
-            {
-                name: "Share Link with Audience",
-                url: "http://localhost/Panolotto/livedraw?roomID=" +roomID + "&role=Audience",
-            },
-        ],
-        ...config,
-    });
-    }        
+        if (zegoContainer !== null && zegoContainer !== undefined) {
+
+            const roomID = '8048';
+            const userID = Math.floor(Math.random() * 10000) + "";
+            let userName = document.querySelector("#username");
+            if (userName !== null && userName !== undefined) {
+                userName = userName.value;
+            } else {
+                userName = "User " + userID;
+            }
+            const appID = 783603126;
+            const serverSecret = "4da40d4a15b2d3c3da3ec3e5ca4bb301";
+            const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(
+                appID,
+                serverSecret,
+                roomID,
+                userID,
+                userName
+            );
+
+            // You can assign different roles based on url parameters.
+            let role = ZegoUIKitPrebuilt.Audience;
+            let config = {};
+            const zp = ZegoUIKitPrebuilt.create(kitToken);
+            zp.joinRoom({
+                container: document.querySelector("#zegoContainer"),
+                scenario: {
+                    mode: ZegoUIKitPrebuilt.LiveStreaming,
+                    config: {
+                        role,
+                    },
+                },
+                sharedLinks: [{
+                    name: "Share Link with Audience",
+                    url: "https://panolotto.com/livedraw",
+                }, ],
+                ...config,
+            });
+        }
         $.each($('input, select, textarea'), function(i, element) {
             var elementType = $(element);
             if (elementType.attr('type') != 'checkbox') {

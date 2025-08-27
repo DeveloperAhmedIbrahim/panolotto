@@ -111,23 +111,19 @@ class LiveStreamController extends Controller
             $recording = Recording::findOrFail($id);
             
             // Delete file from storage
-            if (Storage::disk('public')->exists($recording->file_path)) {
-                Storage::disk('public')->delete($recording->file_path);
+            if (file_exists(url('assets/recordings/' . $recording->file_path))) {
+                unlink('assets/recordings/' . $recording->file_path);
             }
             
             // Delete database record
             $recording->delete();
             
-            return response()->json([
-                'success' => true,
-                'message' => 'Recording deleted successfully'
-            ]);
+            $notify[] = ['success','Recording deleted successfully'];
+            return back()->withNotify($notify);
             
         } catch (\Exception $e) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Failed to delete recording'
-            ], 500);
+            $notify[] = ['error', $e->getMessage()];
+            return back()->withNotify($notify);
         }
     }
 

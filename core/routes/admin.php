@@ -161,6 +161,7 @@ Route::middleware('admin')->group(function () {
         Route::get('new', 'index')->name('new');
         Route::get('stream', 'stream')->name('stream');
         Route::get('list', 'list')->name('list');
+        Route::get('delete/{id}', 'delete')->name('delete');
         Route::post('upload', 'upload')->name('upload');
     });
 

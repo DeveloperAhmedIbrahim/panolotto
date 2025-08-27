@@ -23,7 +23,7 @@
                                             <a href="{{ url('assets/recordings') }}/{{ $recording->file_path }}" target="_blank">Watch</a>
                                         </td>
                                         <td>
-                                            <a href="{{ route('admin.draw.ball.select', $recording->id) }}" class="btn btn-sm btn-outline--danger"><i class="las la-trash-alt"></i>@lang('Delete')</a>
+                                            <a href="{{ route('admin.livestream.delete', $recording->id) }}" class="btn btn-sm btn-outline--danger"><i class="las la-trash-alt"></i>@lang('Delete')</a>
                                         </td>
                                     </tr>
                                 @empty

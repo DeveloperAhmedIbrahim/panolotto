@@ -57,14 +57,35 @@
             margin-right: 15px;
             font-weight: bold;
         }
+        
+        @media only screen and (max-width: 490px) {
+          
+            .E1MZoacefCas4AFmrjIw {
+                width: 55px !important;    
+            }
+        
+        }
+        
+        @media only screen and (max-width: 730px) {
+          
+            .VdaXgamc4uLcVqxdjRnv {
+                width: 95% !important;
+                height: 100% !important;
+            }
+            
+            .jF_DhwXwBFswm5nphXHX {
+                height: 100%;
+                padding-top: 20px;
+            }
+        }        
     </style>
     <div class="recording-container">
         <div id="status" class="status" style="display: none;"></div>
         
-        <div class="d-flex justify-content-between align-items-center mb-3">
+        <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
             <div class="controls">
-                <button id="startBtn" class="btn btn-primary">Start Recording</button>
-                <button id="stopBtn" class="btn btn-danger" disabled>Stop Recording</button>
+                <button id="startBtn" class="btn btn-primary btn-sm">Start Recording</button>
+                <button id="stopBtn" class="btn btn-danger btn-sm" disabled>Stop Recording</button>
             </div>
             <div>
                 <select name="phase" class="form-control" id="phase">
@@ -92,7 +113,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
-                <div class="card-body p-0">
+                <div class="card-body">
                     <div id="zegoContainer"></div>
                     <input type="hidden" name="username" id="username" value="Panolotto Admin" />
                 </div>

@@ -2,24 +2,11 @@
 
 const zegoContainer = document.querySelector("#zegoContainer");
 
-if(zegoContainer !== null && zegoContainer !== undefined){
-  function getUrlParams(url) {
-    let urlStr = url.split("?")[1];
-    const urlSearchParams = new URLSearchParams(urlStr);
-    const result = Object.fromEntries(urlSearchParams.entries());
-    return result;
-  }
-  
-  // Generate a Token by calling a method.
-  // @param 1: appID
-  // @param 2: serverSecret
-  // @param 3: Room ID
-  // @param 4: User ID
-  // @param 5: Username
-  const roomID = getUrlParams(window.location.href)["roomID"] || Math.floor(Math.random() * 10000) + "";
+if (zegoContainer !== null && zegoContainer !== undefined) {
+  const roomID = "8048";
   const userID = Math.floor(Math.random() * 10000) + "";
   let userName = document.querySelector("#username");
-  if(userName !== null && userName !== undefined){
+  if (userName !== null && userName !== undefined) {
     userName = userName.value;
   } else {
     userName = "userName" + userID;
@@ -33,21 +20,17 @@ if(zegoContainer !== null && zegoContainer !== undefined){
     userID,
     userName
   );
-  
+
   // You can assign different roles based on url parameters.
-  let role = getUrlParams(window.location.href)["role"] || "Host";
-  role = role === "Host" ? ZegoUIKitPrebuilt.Host : ZegoUIKitPrebuilt.Audience;
-  let config = {};
-  if (role === "Host") {
-    config = {
-      turnOnCameraWhenJoining: true,
-      showMyCameraToggleButton: true,
-      showAudioVideoSettingsButton: true,
-      //showScreenSharingButton: true,
-      showTextChat: true,
-      showUserList: true,
-    };
-  }
+  let role = ZegoUIKitPrebuilt.Host;
+  let config = {
+    turnOnCameraWhenJoining: true,
+    showMyCameraToggleButton: true,
+    showAudioVideoSettingsButton: true,
+    showScreenSharingButton: true,
+    showTextChat: true,
+    showUserList: true,
+  };
   const zp = ZegoUIKitPrebuilt.create(kitToken);
   zp.joinRoom({
     container: document.querySelector("#zegoContainer"),
@@ -60,14 +43,12 @@ if(zegoContainer !== null && zegoContainer !== undefined){
     sharedLinks: [
       {
         name: "Share Link with Audience",
-        url: "http://localhost/Panolotto/livedraw?roomID=" +roomID + "&role=Audience",
+        url: "https://panolotto.com/livedraw",
       },
     ],
     ...config,
   });
 }
-
-
 
 // responsive sidebar expand js
 $(".res-sidebar-open-btn").on("click", function () {
