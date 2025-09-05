@@ -19,6 +19,16 @@ class LiveStreamController extends Controller
         return view('admin.livestream.index', compact('pageTitle', 'phases'));
     }
 
+    public function stream(Request $request)
+    {
+        $request->validate([
+            'lottery' => 'required'
+        ]);
+
+        $lottery = $request->lottery;
+        return view('admin.livestream.stream', compact('lottery'));
+    }
+
     /**
      * Handle recording upload
      */

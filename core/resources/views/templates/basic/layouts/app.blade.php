@@ -64,49 +64,8 @@
 
     @stack('script')
 
-    <script src="https://unpkg.com/@zegocloud/zego-uikit-prebuilt/zego-uikit-prebuilt.js"></script>
     <script>
-        const zegoContainer = document.querySelector("#zegoContainer");
-
-        if (zegoContainer !== null && zegoContainer !== undefined) {
-
-            const roomID = '8048';
-            const userID = Math.floor(Math.random() * 10000) + "";
-            let userName = document.querySelector("#username");
-            if (userName !== null && userName !== undefined) {
-                userName = userName.value;
-            } else {
-                userName = "User " + userID;
-            }
-            const appID = 783603126;
-            const serverSecret = "4da40d4a15b2d3c3da3ec3e5ca4bb301";
-            const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(
-                appID,
-                serverSecret,
-                roomID,
-                userID,
-                userName
-            );
-
-            // You can assign different roles based on url parameters.
-            let role = ZegoUIKitPrebuilt.Audience;
-            let config = {};
-            const zp = ZegoUIKitPrebuilt.create(kitToken);
-            zp.joinRoom({
-                container: document.querySelector("#zegoContainer"),
-                scenario: {
-                    mode: ZegoUIKitPrebuilt.LiveStreaming,
-                    config: {
-                        role,
-                    },
-                },
-                sharedLinks: [{
-                    name: "Share Link with Audience",
-                    url: "https://panolotto.com/livedraw",
-                }, ],
-                ...config,
-            });
-        }
+        
         $.each($('input, select, textarea'), function(i, element) {
             var elementType = $(element);
             if (elementType.attr('type') != 'checkbox') {
