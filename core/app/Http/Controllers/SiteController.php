@@ -16,7 +16,7 @@ use App\Models\SupportTicket;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
-
+use Illuminate\Support\Facades\Log;
 
 class SiteController extends Controller
 {
@@ -312,5 +312,10 @@ class SiteController extends Controller
         }
         $maintenance = Frontend::where('data_keys', 'maintenance.data')->first();
         return view('Template::maintenance', compact('pageTitle', 'maintenance'));
+    }
+
+    public function streamCallback(Request $request)
+    {
+        Log::info("Data:", $request->all());
     }
 }
