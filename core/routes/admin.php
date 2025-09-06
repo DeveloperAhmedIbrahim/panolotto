@@ -160,6 +160,8 @@ Route::middleware('admin')->group(function () {
     Route::controller('LiveStreamController')->prefix('live-stream')->name('livestream.')->group(function () {
         Route::get('new', 'index')->name('new');
         Route::get('stream', 'stream')->name('stream');
+        Route::get('status', 'status')->name('status');
+        Route::get('update', 'update')->name('update');
         Route::get('list', 'list')->name('list');
         Route::get('delete/{id}', 'delete')->name('delete');
         Route::post('upload', 'upload')->name('upload');

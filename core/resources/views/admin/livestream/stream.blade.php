@@ -18,7 +18,7 @@
             //parameters
             apiKey: "382f472d-a53d-4594-8247-6c92bc3745bd",
             meetingId: "DS7A9S8",
-            name: "{{ auth()->guard('admin')->user()->name }}",
+            name: "{{ auth()->guard('admin')->user()->name }} - {{ $lottery }}",
 
             containerId: null,
 
@@ -38,12 +38,12 @@
             recording: {
                 autoStart: true, // auto start recording on participant joined
                 enabled: true,
-                webhookUrl: "https://www.videosdk.live/callback",
+                webhookUrl: "https://panolotto.com/stream/callback",
             },
 
             hls: {
                 enabled: true,
-                autoStart: false,
+                autoStart: true,
             },            
 
             layout: {
@@ -88,7 +88,7 @@
                 // visible when redirect on leave not provieded
                 actionButton: {
                     // optional action button
-                    label: "Save & Go Back", // action button label
+                    label: "Return Back", // action button label
                     href: "{{ url('admin/live-stream/new') }}", // action button href
                 },
             },
@@ -97,7 +97,8 @@
 
             debug: true, // pop up error during invalid config or netwrok error
 
-            maxResolution: "hd", // "hd" or "sd"            
+            maxResolution: "hd", // "hd" or "sd"
+            
         });
     </script>
 </body>

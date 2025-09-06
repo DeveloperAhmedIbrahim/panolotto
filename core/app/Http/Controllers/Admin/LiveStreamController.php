@@ -2,10 +2,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\ActiveStream;
 use App\Models\Phase;
 use App\Models\Recording;
+use DateTimeImmutable;
 use Exception;
+use Firebase\JWT\JWT;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -16,7 +20,8 @@ class LiveStreamController extends Controller
     {
         $pageTitle = 'New Stream';
         $phases = Phase::active()->winnerNotSet()->whereDate('draw_date', '<=', now())->with('lottery:id,name')->orderBy('draw_date', 'desc')->get();
-        return view('admin.livestream.index', compact('pageTitle', 'phases'));
+        $stream = ActiveStream::find(1);
+        return view('admin.livestream.index', compact('pageTitle', 'phases', 'stream'));
     }
 
     public function stream(Request $request)
@@ -25,75 +30,115 @@ class LiveStreamController extends Controller
             'lottery' => 'required'
         ]);
 
+        $stream = ActiveStream::find(1);
+
+        if($stream->status == 0) 
+        {
+            $notify[] = ['error', "Please activate stream first!"];
+            return back()->withNotify($notify);
+        }
+
         $lottery = $request->lottery;
+        
+        ActiveStream::whereId(1)->update(['title' => $lottery]);
+
         return view('admin.livestream.stream', compact('lottery'));
     }
 
-    /**
-     * Handle recording upload
-     */
-    public function upload(Request $request)
+
+    public function status(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'recording' => 'required|file|mimes:webm,mp4|max:102400', // 100MB max
-            'title' => 'required|string|max:255',
+        $stream = ActiveStream::find(1);
+        if($request->status == "activate") {
+            $stream->status = 1;
+            $message = "Stream activated successfully!";
+        } else {
+            $stream->status = 0;
+            $message = "Stream deactivated successfully!";
+        }
+        $stream->save();
+
+        $notify[] = ['success', $message];
+        return back()->withNotify($notify);
+    }
+
+
+    public function generateToken()
+    {
+        $VIDEOSDK_API_KEY = "382f472d-a53d-4594-8247-6c92bc3745bd";
+        $VIDEOSDK_SECRET_KEY = "ea06c7e86ef386a0af6dffafbe3e03adf3fe69d9ca5d74c609acb41a5c23c4a9";
+
+        $issuedAt = new DateTimeImmutable();
+        $expire = $issuedAt->modify('+2 hours')->getTimestamp();
+
+        $payload = [
+            "apikey"       => $VIDEOSDK_API_KEY,
+            "version"      => 2,
+            "iat"          => $issuedAt->getTimestamp(),
+            "exp"          => $expire,
+        ];
+
+        $jwt = JWT::encode($payload, $VIDEOSDK_SECRET_KEY, 'HS256');
+    
+        return $jwt;
+    }
+
+    public function fetchSessions()
+    {
+        $token = $this->generateToken();
+
+        $response = Http::withHeaders([
+            'Authorization' => $token,
+            'Content-Type'  => 'application/json',
+        ])->get('https://api.videosdk.live/v2/sessions', [
+            'page'    => 1,
+            'perPage' => 5,
         ]);
 
-        if ($validator->fails()) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Validation failed: ' . $validator->errors()->first()
-            ], 422);
-        }
+        return $response->json();
+    }
 
-        try {
-            $file = $request->file('recording');
-            $title = $request->input('phase');
-            
-            // Generate unique filename
-            $timestamp = now()->format('Y-m-d_H-i-s');
-            $originalName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
-            $extension = $file->getClientOriginalExtension();
-            $filename = $originalName . '_' . $timestamp . '.' . $extension;
+    public function fetchRecordings($id)
+    {
+        $token = $this->generateToken();
 
-            $path = fileUploader($request->file('recording'), getFilePath('recordings'), filename: $filename);
+        $response = Http::withHeaders([
+            'Authorization' => $token,
+            'Content-Type'  => 'application/json',
+        ])->get("https://api.videosdk.live/v2/recordings/{$id}");
 
-            if (!$path) {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Failed to store file'
-                ], 500);
+        return $response->json();
+    }
+
+    public function update()
+    {        
+        Recording::truncate();
+        $title = "Uknown Title";
+        $sessions = $this->fetchSessions();
+        foreach($sessions["data"] as $session) {
+            $recordings = [];
+            foreach($session["participants"] as $participant) {
+                if($participant["mode"] == "CONFERENCE") {
+                    if(isset(explode('- ', $participant["name"])[1])) {
+                        $title = explode('- ', $participant["name"])[1];              
+                    }
+                }
             }
 
-            // Save recording details to database
-            $recording = Recording::create([
-                'title' => $title,
-                'filename' => $filename,
-                'file_path' => $path,
-                'created_at' => now(),
-                'updated_at' => now()
-            ]);
+            foreach($session["recordingLog"] as $recordingLog) {
+                $recording = $this->fetchRecordings($recordingLog["recordingId"]);
+                $recordings[] = $recording["file"]["fileUrl"];
+            }
 
-            return response()->json([
-                'success' => true,
-                'message' => 'Recording uploaded successfully',
-                'recording' => [
-                    'id' => $recording->id,
-                    'title' => $recording->title,
-                    'filename' => $recording->filename,
-                    'file_size' => $recording->file_size,
-                    'created_at' => $recording->created_at
-                ]
-            ]);
-
-        } catch (Exception $e) {
-            Log::error('Recording upload failed: ' . $e->getMessage());
-            
-            return response()->json([
-                'success' => false,
-                'message' => 'Upload failed: ' . $e->getMessage()
-            ], 500);
+            $recModel = new Recording();
+            $recModel->title = $title;
+            $recModel->videos = json_encode($recordings);
+            $recModel->created_at = $session["start"];
+            $recModel->save();
         }
+
+        $notify[] = ['success', "Recordings updated successfully!"];
+        return back()->withNotify($notify);
     }
 
     /**
@@ -103,7 +148,7 @@ class LiveStreamController extends Controller
     {
         try {
             $pageTitle = 'Live Stream Recordings';
-            $recordings = Recording::orderBy('created_at', 'desc')->get();
+            $recordings = Recording::all();
             return view('admin.livestream.list', compact('pageTitle', 'recordings'));
         } catch (\Exception $e) {
             return response()->json([

@@ -20,7 +20,9 @@
                                         <td>{{ $recording->title }}</td>
                                         <td>{{ showDateTime($recording->created_at, 'd M, Y h:i A') }}</td>
                                         <td>
-                                            <a href="{{ url('assets/recordings') }}/{{ $recording->file_path }}" target="_blank">Watch</a>
+                                            @foreach(json_decode($recording->videos) as $video)
+                                                <a href="{{$video}}" target="_blank">Watch</a>
+                                            @endforeach
                                         </td>
                                         <td>
                                             <a href="{{ route('admin.livestream.delete', $recording->id) }}" class="btn btn-sm btn-outline--danger"><i class="las la-trash-alt"></i>@lang('Delete')</a>

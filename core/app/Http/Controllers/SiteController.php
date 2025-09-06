@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Constants\Status;
+use App\Models\ActiveStream;
 use App\Models\AdminNotification;
 use App\Models\CoinRequest;
 use App\Models\Frontend;
@@ -11,12 +12,16 @@ use App\Models\Language;
 use App\Models\Lottery;
 use App\Models\Page;
 use App\Models\Phase;
+use App\Models\Recording;
 use App\Models\SupportMessage;
 use App\Models\SupportTicket;
 use Carbon\Carbon;
+use DateTimeImmutable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Log;
+use Firebase\JWT\JWT;
+use Illuminate\Support\Facades\Http;
 
 class SiteController extends Controller
 {
@@ -100,7 +105,15 @@ class SiteController extends Controller
         $sections = $page->secs;
         $seoContents = $page->seo_content;
         $seoImage = @$seoContents->image ? getImage(getFilePath('seo') . '/' . @$seoContents->image, getFileSize('seo')) : null;
-        return view('Template::pages', compact('pageTitle', 'sections', 'seoContents', 'seoImage'));
+        
+        $stream = null;
+        $streams = null;
+        if($slug == "livedraw") {
+            $stream = ActiveStream::find(1);
+            $streams = Recording::all();
+        }
+        
+        return view('Template::pages', compact('pageTitle', 'sections', 'seoContents', 'seoImage', 'stream', 'streams'));
     }
 
     public function faqs()
