@@ -118,7 +118,7 @@ function startCounter() {
         const timeDifference = targetTime - currentTime;
         // If the target time has passed, display a message and stop the timer
         if (timeDifference <= 0) {
-            clearInterval(counterInterval);
+            // counterInterval && clearInterval(counterInterval);
             counterDays.innerHTML = "00";
             counterHours.innerHTML = "00";
             counterMints.innerHTML = "00";

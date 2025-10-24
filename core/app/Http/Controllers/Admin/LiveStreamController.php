@@ -7,7 +7,6 @@ use App\Models\Phase;
 use App\Models\Recording;
 use DateTimeImmutable;
 use Exception;
-use Firebase\JWT\JWT;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
@@ -65,23 +64,35 @@ class LiveStreamController extends Controller
 
     public function generateToken()
     {
-        $VIDEOSDK_API_KEY = "382f472d-a53d-4594-8247-6c92bc3745bd";
-        $VIDEOSDK_SECRET_KEY = "ea06c7e86ef386a0af6dffafbe3e03adf3fe69d9ca5d74c609acb41a5c23c4a9";
+        $VIDEOSDK_API_KEY = "c09d7c7d-e4b5-4e36-b0e0-4e04a75eb114";
+        $VIDEOSDK_SECRET_KEY = "595a0e2272e7d0c756594eaa665e82f82ee51914104e2cfed65b7b4f617fbe54";
 
         $issuedAt = new DateTimeImmutable();
         $expire = $issuedAt->modify('+2 hours')->getTimestamp();
 
         $payload = [
-            "apikey"       => $VIDEOSDK_API_KEY,
-            "version"      => 2,
-            "iat"          => $issuedAt->getTimestamp(),
-            "exp"          => $expire,
+            "apikey" => $VIDEOSDK_API_KEY,
+            "version" => 2,
+            "iat" => $issuedAt->getTimestamp(),
+            "exp" => $expire,
         ];
 
-        $jwt = JWT::encode($payload, $VIDEOSDK_SECRET_KEY, 'HS256');
-    
+        $jwt = $this->encode($payload, $VIDEOSDK_SECRET_KEY, 'HS256');
         return $jwt;
     }
+
+    public function encode($payload, $key, $alg = 'HS256') {
+            $header = json_encode(['typ' => 'JWT', 'alg' => $alg]);
+            $payload = json_encode($payload);
+            
+            $base64Header = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode($header));
+            $base64Payload = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode($payload));
+            
+            $signature = hash_hmac('sha256', $base64Header . "." . $base64Payload, $key, true);
+            $base64Signature = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode($signature));
+            
+            return $base64Header . "." . $base64Payload . "." . $base64Signature;
+        }
 
     public function fetchSessions()
     {

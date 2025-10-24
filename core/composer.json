@@ -10,7 +10,6 @@
         "btcpayserver/btcpayserver-greenfield-php": "^2.3",
         "coingate/coingate-php": "^4.1",
         "ezyang/htmlpurifier": "^4.17",
-        "firebase/php-jwt": "^6.11",
         "guzzlehttp/guzzle": "^7.8",
         "intervention/image": "^3.6",
         "laramin/utility": "^1.0",

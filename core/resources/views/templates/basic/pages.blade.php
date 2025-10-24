@@ -22,7 +22,7 @@
 
                 meeting.init({
                     //parameters
-                    apiKey: "382f472d-a53d-4594-8247-6c92bc3745bd",
+                    apiKey: "c09d7c7d-e4b5-4e36-b0e0-4e04a75eb114",
                     meetingId: "DS7A9S8",
                     name: '',
 

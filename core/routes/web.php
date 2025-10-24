@@ -6,6 +6,11 @@ Route::get('/clear', function () {
     \Illuminate\Support\Facades\Artisan::call('optimize:clear');
 });
 
+
+Route::get('testing', function() {
+    dd("ok");
+})->name('cron');
+
 Route::get('cron', 'CronController@cron')->name('cron');
 
 // User Support Ticket
