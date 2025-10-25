@@ -14,7 +14,8 @@
                     </div>
                     <h5 class="ticket-item__name">{{ __($lottery->name) }}</h5>
                     <h3 class="ticket-item__prize">
-                        <span>{{ shortNumber($lottery->maxPrize()) }} {{ gs()->cur_text }}
+                        {{-- <span>{{ shortNumber($lottery->maxPrize()) }} {{ gs()->cur_text }} --}}
+                        <span>{{ number_format($lottery->maxPrize(), '2','.' ,',') }} {{ gs()->cur_text }}
                     </h3>
                     <div class="countdown" data-Date="{{ $lottery->activePhase->draw_date, 'd-m-Y H:i:s' }}">
                         <h5 class="countdown__title">@lang('Draw closes in')</h5>
@@ -47,6 +48,8 @@
         </div>
     @endif
 </div>
+
+<input type="hidden" name="lotteryTimeZone" id="lotteryTimeZone" value="{{ config('app.timezone') }}">
 
 @push('script-lib')
     <script src="{{ asset($activeTemplateTrue . 'js/multi-countdown.js') }}"></script>

@@ -30,7 +30,8 @@
                                         {{ __($lottery->name) }}
                                     </h4>
                                     <span class="result-card__sub-title">
-                                        {{  shortNumber($lottery->maxPrize()) }}  {{ gs()->cur_text }}
+                                        {{-- {{  shortNumber($lottery->maxPrize()) }}  {{ gs()->cur_text }} --}}
+                                        <span>{{ number_format($lottery->maxPrize(), '2','.' ,',') }} {{ gs()->cur_text }}
                                     </span>
                                 </div>
                             </div>
@@ -231,8 +232,65 @@
                     </div>
                 </div>
             </div>
+            <div class="mt-5">
+                <div class="prize-section">
+                    <div class="text-center mb-4">
+                        <h3 class="prize-title">🏆 @lang('Prize Distribution')</h3>
+                        <p class="prize-subtitle">@lang('Match the balls to win exciting prizes!')</p>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table prize-table" style="overflow: hidden;">
+                            <thead>
+                                <tr>
+                                    <th>@lang('Matching Balls')</th>     
+                                    <th class="text-end">@lang('Prize Amount')</th>     
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($lottery->winningSettings as $index => $winningSetting)
+                                    @if($winningSetting->status == 1)
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center gap-3">
+                                                    <div class="prize-ball">{{ $winningSetting->normal_ball }}</div>
+                                                    <div>
+                                                        <div class="fw-bold">{{ $winningSetting->normal_ball }} @lang('Balls Match')</div>
+                                                        <small class="text-muted">
+                                                            @if($index == 0) 
+                                                                @lang('Jackpot Prize')
+                                                            @elseif($index == 1) 
+                                                                @lang('Second Prize')
+                                                            @elseif($index == 2) 
+                                                                @lang('Third Prize')
+                                                            @else 
+                                                                @lang('Prize')
+                                                            @endif
+                                                        </small>
+                                                    </div>
+                                                </div>
+                                            </td>     
+                                            <td class="text-end">
+                                                <span class="prize-amount">{{ number_format($winningSetting->prize_money, 2, '.', ',') }}</span>
+                                                <span class="currency-badge">{{ gs()->cur_text }}</span>
+                                            </td>     
+                                        </tr>
+                                    @endif
+                                @endforeach
+                            </tbody>        
+                        </table>
+                    </div>
+
+                    <div class="alert alert-info d-flex align-items-center mt-3" role="alert">
+                        <i class="las la-info-circle fs-4 me-2"></i>
+                        <span>@lang('Match more balls to increase your winning amount!')</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+    <input type="hidden" name="lotteryTimeZone" id="lotteryTimeZone" value="{{ config('app.timezone') }}">
+
 @endsection
 
 @push('script-lib')
@@ -537,5 +595,112 @@
             text-align: center;
             margin-bottom: 40px;
         }
+        /* Prize Section Styles */
+        .prize-section {
+            background: #fff;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .prize-title {
+            color: #FF9800;
+            font-weight: 700;
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+        }
+
+        .prize-subtitle {
+            color: #666;
+            margin-bottom: 0;
+        }
+
+        .prize-table {
+            margin-bottom: 0;
+        }
+
+        .prize-table thead {
+            background: linear-gradient(135deg, #FF9800 0%, #F57C00 100%);
+        }
+
+        .prize-table thead th {
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 15px;
+            border: none;
+        }
+
+        .prize-table tbody tr {
+            border-bottom: 1px solid #f0f0f0;
+            transition: all 0.3s ease;
+        }
+
+        .prize-table tbody tr:hover {
+            background: #fff8f0;
+            transform: translateX(5px);
+        }
+
+        .prize-table tbody td {
+            padding: 18px 15px;
+            vertical-align: middle;
+        }
+
+        .prize-ball {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #FF9800 0%, #F57C00 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 10px rgba(255, 152, 0, 0.3);
+            flex-shrink: 0;
+        }
+
+        .prize-amount {
+            color: #FF9800;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .currency-badge {
+            display: inline-block;
+            background: #FFF3E0;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            margin-left: 6px;
+            color: #F57C00;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .prize-section {
+                padding: 20px 15px;
+            }
+
+            .prize-title {
+                font-size: 1.4rem;
+            }
+
+            .prize-ball {
+                width: 38px;
+                height: 38px;
+                font-size: 1rem;
+            }
+
+            .prize-amount {
+                font-size: 1.1rem;
+            }
+
+            .prize-table tbody td {
+                padding: 12px 10px;
+            }
+        }                    
     </style>
 @endpush

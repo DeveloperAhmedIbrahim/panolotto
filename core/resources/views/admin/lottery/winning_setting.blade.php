@@ -33,7 +33,7 @@
                                             <label>@lang('Win')</label>
                                             <div class="input-group">
                                                 <input class="form-control win_times" min="1" name="winning[{{ $key }}][win_times]" value="{{ @$winningSetting ? getAmount($winningSetting->win_times) : '' }}" required step="any" type="number">
-                                                <span class="input-group-text">@lang('Times')</span>
+                                                <span class="input-group-text">{{ __(gs('cur_text')) }}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -74,8 +74,9 @@
         (function($) {
             "use strict";
             $('.win_times').on('input', function() {
-                let price = "{{ $lottery->price }}" * 1;
-                $(this).parents('.parent').find('.total_amount').val($(this).val() * price);
+                // let price = "{{ $lottery->price }}" * 1;
+                // $(this).parents('.parent').find('.total_amount').val($(this).val() * price);
+                $(this).parents('.parent').find('.total_amount').val($(this).val());
             });
         })(jQuery);
 

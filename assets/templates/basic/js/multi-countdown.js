@@ -2,6 +2,8 @@
 
 $(function () {
 
+    const timeZone = document.getElementById("lotteryTimeZone").value;
+
     // CONFIG
 
     let mainClass = '.countdown';
@@ -91,14 +93,18 @@ $(function () {
 
     function timeDistance(date, fixTime) {
         var date1 = new Date(date);
-        let date2, d, utc;
+        let date2;
 
-        d = new Date();
-        utc = d.getTime() + (d.getTimezoneOffset() * 60000);
-        if (fixTime != undefined) date2 = new Date();
-        else date2 = new Date();
+        // Get current time according to timezone
+        const nowInTimeZone = new Date(new Date().toLocaleString("en-US", { timeZone: timeZone }));
+        
+        if (fixTime != undefined) {
+            date2 = nowInTimeZone;
+        } else {
+            date2 = nowInTimeZone;
+        }
 
-        var diff = date1.getTime() - date2;
+        var diff = date1.getTime() - date2.getTime();
         var msec = diff;
         var hh = Math.floor(msec / 1000 / 60 / 60);
         msec -= hh * 1000 * 60 * 60;
@@ -121,9 +127,10 @@ $(function () {
         if (fixTimeDate['Hours'] != undefined) { getFixTimeDate += +fixTimeDate['Hours'] * 60; }
         if (fixTimeDate['Minutes'] != undefined) getFixTimeDate += +fixTimeDate['Minutes'];
 
-        var now = new Date();
-        now.setMinutes(now.getMinutes() + getFixTimeDate); // timestamp
-        date = new Date(now); // Date object
+        // Get current time in timezone
+        const nowInTimeZone = new Date(new Date().toLocaleString("en-US", { timeZone: timeZone }));
+        nowInTimeZone.setMinutes(nowInTimeZone.getMinutes() + getFixTimeDate);
+        date = new Date(nowInTimeZone);
 
         return date;
     }

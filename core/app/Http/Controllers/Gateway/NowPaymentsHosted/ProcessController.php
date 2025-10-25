@@ -23,7 +23,6 @@ class ProcessController extends Controller {
             'Content-Type: application/json',
         ]);
         $response = json_decode($response);
-
         if (!$response) {
             $send['error']   = true;
             $send['message'] = 'Some problem ocurred with api.';
@@ -34,16 +33,22 @@ class ProcessController extends Controller {
             $send['message'] = 'Invalid api key';
             return json_encode($send);
         }
-
+        $destinationTag = null;
+        if(isset($response->payin_extra_id)) 
+        {
+            $destinationTag = $response->payin_extra_id;
+        }
+        // dd($destinationTag);
         if ($deposit->btc_amount == 0 || $deposit->btc_wallet == "") {
             $sendto              = $response->pay_address;
+            $deposit->destination_tag = $destinationTag;
             $deposit->btc_wallet = $sendto;
             $deposit->btc_amount    = $response->pay_amount;
             $deposit->update();
         }
-
         $send['amount']   = $deposit->btc_amount;
         $send['sendto']   = $deposit->btc_wallet;
+        $send['destination_tag']   = $deposit->destination_tag;
         $send['img']      = cryptoQR($deposit->btc_wallet);
         $send['currency'] = $deposit->method_currency;
         $send['view']     = 'user.payment.crypto';

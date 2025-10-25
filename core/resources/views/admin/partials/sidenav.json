@@ -662,39 +662,7 @@
                 "title": "Cache",
                 "route_name": "admin.system.optimize",
                 "menu_active": "admin.system.optimize"
-            },
-            {
-                "keyword": [
-                    "Update",
-                    "System",
-                    "Update management",
-                    "System update",
-                    "Software updates",
-                    "version update",
-                    "upgrade",
-                    "latest version"
-                ],
-                "title": "Update",
-                "route_name": "admin.system.update",
-                "menu_active": "admin.system.update*",
-                "counter": "updateAvailable"
             }
         ]
-    },
-    "report_and_request": {
-        "keyword": [
-            "Report & Request",
-            "Report and Request",
-            "Reports and Requests",
-            "Reporting and Requests",
-            "Report management",
-            "Request management",
-            "feature request",
-            "bug report"
-        ],
-        "title": "Report & Request",
-        "icon": "las la-bug",
-        "route_name": "admin.request.report",
-        "menu_active": "admin.request.report"
     }
 }
