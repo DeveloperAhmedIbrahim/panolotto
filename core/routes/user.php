@@ -112,6 +112,7 @@ Route::middleware('auth')->name('user.')->group(function () {
             Route::get('confirm', 'depositConfirm')->name('confirm');
             Route::get('manual', 'manualDepositConfirm')->name('manual.confirm');
             Route::post('manual', 'manualDepositUpdate')->name('manual.update');
+            Route::get('status/{id}', 'checkDepositStatus')->name('status');
         });
     });
 });

@@ -207,4 +207,22 @@ class PaymentController extends Controller
         $notify[] = ['success', 'You have payment request has been taken'];
         return to_route('user.deposit.history')->withNotify($notify);
     }
+
+    public function checkDepositStatus($id)
+    {
+        try {
+            $deposit = Deposit::findOrFail($id);
+            
+            return response()->json([
+                'status' => $deposit->status,
+                'message' => $deposit->status == 1 ? 'Deposit successful' : 'Deposit pending'
+            ]);
+            
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => 2,
+                'message' => 'Deposit not found'
+            ], 404);
+        }
+    }
 }
