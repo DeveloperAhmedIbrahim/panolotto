@@ -16,6 +16,7 @@
                     </div>
                     <p class="banner-content__desc mt-0">{{ __(@$content->data_values->subheading) }}</p>
                     <input type="hidden" id="counterDateTime" value="{{ $heroCounter->datetime }}">
+                    <input type="hidden" id="serverTimezone" value="{{ config('app.timezone') }}">
                     <div class="banner-content__button d-flex align-items-start text-light flex-column mt-0">
                         <div class="fs-1"><b>XRP{{ $heroCounter->price }}M</b></div>
                         <div class="fs-6">Panolotto lets the good times roll.</div>
@@ -98,27 +99,41 @@
 </div>
 
 <script>
-// Target date from the database (YYYY-MM-DD HH:MM:SS)
-const targetDate = document.getElementById("counterDateTime").value;
+// Get user's timezone
+function getUserTimezone() {
+    return Intl.DateTimeFormat().resolvedOptions().timeZone;
+}
 
 // Function to start the countdown
 function startCounter() {
-    // Get the HTML element where the countdown will be displayed
+    // Get the target date and server timezone
+    const targetDateStr = document.getElementById("counterDateTime").value;
+    const serverTimezone = document.getElementById("serverTimezone").value;
+    
+    // Get user's timezone
+    const userTimezone = getUserTimezone();
+    
+    console.log('Server Timezone:', serverTimezone);
+    console.log('User Timezone:', userTimezone);
+    
+    // Get the HTML elements where the countdown will be displayed
     const counterDays = document.getElementById("counterDays");
     const counterHours = document.getElementById("counterHours");
     const counterMints = document.getElementById("counterMints");
 
     // Function to update the countdown every second
     const updateCounter = () => {
-        // Parse the target date into a JavaScript Date object
-        const targetTime = new Date(targetDate).getTime();
-        // Get the current time
+        // Parse the target date as UTC and get timestamp
+        const targetTime = new Date(targetDateStr + ' UTC').getTime();
+        
+        // Get the current time in user's timezone
         const currentTime = new Date().getTime();
+        
         // Calculate the time difference in milliseconds
         const timeDifference = targetTime - currentTime;
-        // If the target time has passed, display a message and stop the timer
+        
+        // If the target time has passed, display zeros and stop
         if (timeDifference <= 0) {
-            // counterInterval && clearInterval(counterInterval);
             counterDays.innerHTML = "00";
             counterHours.innerHTML = "00";
             counterMints.innerHTML = "00";
