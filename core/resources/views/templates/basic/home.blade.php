@@ -22,7 +22,7 @@
                 <div class="col-lg-3 col-sm-6 how-work-item wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="0.3s" style="visibility: visible; animation-duration: 0.5s; animation-delay: 0.3s; animation-name: fadeInLeft;">
                     <div class="how-work-card">
                         <div class="how-work-card__step text--base text-shadow--base">2</div>
-                        <h3 class="title mt-4">Make a play for 2XRP per line</h3>
+                        <h3 class="title mt-4">Make a play for 1XRP per line</h3>
                         <p class="mt-2">Choose from a variety of thrilling lottery games. Pick your favorite and get ready to win big!</p>
                     </div><!-- how-work-card end -->
                 </div>
@@ -42,6 +42,7 @@
                 </div>
             </div>
         </div>
+        <script async src="//static.zotabox.com/p/i/pin13azxz7xchv7mpceovsyn9wgf5gsm/widgets.js"></script>
     </section>
     @if ($sections->secs != null)
         @foreach (json_decode($sections->secs) as $sec)

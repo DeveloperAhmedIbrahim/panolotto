@@ -16,7 +16,7 @@
                     </li>
                     {{-- <li class="nav-item">
                         <a class="nav-link {{ menuActive('results') }}" href="{{ route('results') }}">@lang('Results')</a>
-                    </li> --}}
+                    </li> --}} 
                     @php
                         $pages = App\Models\Page::where('is_default', Status::NO)
                             ->where('tempname', $activeTemplate)
@@ -36,7 +36,10 @@
                         <a class="nav-link {{ menuActive('faqs') }}" href="{{ route('faqs') }}">@lang('FAQs')</a>
                     </li> --}}
                     <li class="nav-item">
-                        <a class="nav-link {{ menuActive('contact') }}" href="{{ route('contact') }}">@lang('Contact')</a>
+                        <a class="nav-link {{ menuActive('contact') }}" href="{{ route('results') }}">@lang('Lottery Results')</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ menuActive('contact') }}" href="https://www.youtube.com/playlist?list=PLACPz8AooxS1cJ6LLWpufLkad_kFDAYcN">@lang('Tutorial Videos')</a>
                     </li>
                 </ul>
                 <div class="top-button flex-between">

@@ -18,7 +18,7 @@
                     <input type="hidden" id="counterDateTime" value="{{ $heroCounter->datetime }}">
                     <input type="hidden" id="serverTimezone" value="{{ config('app.timezone') }}">
                     <div class="banner-content__button d-flex align-items-start text-light flex-column mt-0">
-                        <div class="fs-1"><b>XRP{{ $heroCounter->price }}M</b></div>
+                        <div class="fs-1"><b>{{ $heroCounter->price }} XRP</b></div>
                         <div class="fs-6">Panolotto lets the good times roll.</div>
                     </div>
                     <div class="banner-content__button d-flex align-items-center gap-3 text-light">
@@ -67,8 +67,8 @@
                         <i class="fas fa-coins"></i>
                     </div>
                     <div class="overview-card__content">
-                        <h3 class="amount text--base">Just 2 XRP!</h3>
-                        <p>Play for just 2XRP Per Line</p>
+                        <h3 class="amount text--base">Just 1 XRP!</h3>
+                        <p>Play for just 1 XRP Per Line</p>
                     </div>
                 </div>
             </div>
@@ -78,7 +78,7 @@
                         <i class="las la-trophy"></i>
                     </div>
                     <div class="overview-card__content">
-                        <h3 class="amount text--base">1500XRP</h3>
+                        <h3 class="amount text--base">10,000 XRP</h3>
                         <p>This week's Jackpot</p>
                     </div>
                 </div>
@@ -89,8 +89,8 @@
                         <i class="las la-eye"></i>
                     </div>
                     <div class="overview-card__content">
-                        <h3 class="amount text--base">6</h3>
-                        <p>Days until draw</p>
+                        <h3 class="amount text--base">5th Aug</h3>
+                        <p>Watch the draw live</p>
                     </div>
                 </div>
             </div>

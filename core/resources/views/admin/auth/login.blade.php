@@ -27,7 +27,7 @@
                                     </div>
                                     <input type="password" class="form-control" name="password" required>
                                 </div>
-                                {{-- <x-captcha /> --}}
+                                <x-captcha />
                                 <button type="submit" class="btn cmn-btn w-100">@lang('LOGIN')</button>
                             </form>
                         </div>
