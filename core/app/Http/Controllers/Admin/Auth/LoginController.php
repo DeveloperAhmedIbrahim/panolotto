@@ -61,10 +61,10 @@ class LoginController extends Controller
 
         $request->session()->regenerateToken();
 
-        if(!verifyCaptcha()){
-            $notify[] = ['error','Invalid captcha provided'];
-            return back()->withNotify($notify);
-        }
+        // if(!verifyCaptcha()){
+        //     $notify[] = ['error','Invalid captcha provided'];
+        //     return back()->withNotify($notify);
+        // }
 
 
         // Onumoti::getData();

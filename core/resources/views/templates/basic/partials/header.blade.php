@@ -11,12 +11,20 @@
                     <li class="nav-item">
                         <a class="nav-link {{ menuActive('home') }}" href="{{ route('home') }}">@lang('Home')</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ menuActive('lottery.tickets') }}" href="{{ route('lottery.tickets') }}">@lang('Lotteries')</a>
+                    <li class="nav-item has-dropdown">
+                        <a class="nav-link {{ menuActive('lottery.tickets') }}" href="{{ route('lottery.tickets') }}">
+                            @lang('Lotteries') <i class="las la-angle-down nav-caret"></i>
+                        </a>
+                        <ul class="nav-dropdown">
+                            <li class="nav-dropdown__item">
+                                <a class="nav-dropdown__link" href="{{ route('lottery.tickets') }}">Mega XRP Jackpot</a>
+                            </li>
+                            <li class="nav-dropdown__item">
+                                <a class="nav-dropdown__link" href="{{ route('lottery.tickets') }}">Daily XRP Draw</a>
+                            </li>
+                        </ul>
                     </li>
-                    {{-- <li class="nav-item">
-                        <a class="nav-link {{ menuActive('results') }}" href="{{ route('results') }}">@lang('Results')</a>
-                    </li> --}} 
+
                     @php
                         $pages = App\Models\Page::where('is_default', Status::NO)
                             ->where('tempname', $activeTemplate)
@@ -29,29 +37,38 @@
                         </li>
                     @endforeach
 
-                    {{-- <li class="nav-item">
-                        <a class="nav-link {{ menuActive('blogs') }}" href="{{ route('blogs') }}">@lang('Blog')</a>
+                    <li class="nav-item">
+                        <a class="nav-link {{ menuActive('results') }}" href="{{ route('results') }}">@lang('Results')</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ menuActive('faqs') }}" href="{{ route('faqs') }}">@lang('FAQs')</a>
-                    </li> --}}
-                    <li class="nav-item">
-                        <a class="nav-link {{ menuActive('contact') }}" href="{{ route('results') }}">@lang('Lottery Results')</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ menuActive('contact') }}" href="https://www.youtube.com/playlist?list=PLACPz8AooxS1cJ6LLWpufLkad_kFDAYcN">@lang('Tutorial Videos')</a>
+                        <a class="nav-link" href="https://www.youtube.com/playlist?list=PLACPz8AooxS1cJ6LLWpufLkad_kFDAYcN">@lang('Tutorial Videos')</a>
                     </li>
                 </ul>
+
                 <div class="top-button flex-between">
                     <ul class="login-registration-list flex-align">
-                        @guest
-                            <li class="login-registration-list__item"><a class=" btn btn--base btn--sm outline btn-auth" href="{{ route('user.login') }}">@lang('Login')</a></li>
-                            <li class="login-registration-list__item"><a class="btn btn--base btn--sm btn-auth" href="{{ route('user.register') }}">@lang('Register')</a></li>
-                        @else
-                            <li class="login-registration-list__item"><a class=" btn btn--base btn--sm outline btn-auth" href="{{ route('user.home') }}">@lang('Dashboard')</a></li>
-                            <li class="login-registration-list__item"><a class="btn btn--base btn--sm btn-auth" href="{{ route('user.logout') }}">@lang('Logout')</a></li>
-                        @endguest
+                        <li class="login-registration-list__item">
+                            <div class="dropdown account-dropdown">
+                                <button class="btn btn-account dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="las la-user-circle"></i>
+                                    <span>@lang('Account')</span>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end account-dropdown__menu">
+                                    @guest
+                                        <li><a class="dropdown-item" href="{{ route('user.login') }}">@lang('Login')</a></li>
+                                        <li><a class="dropdown-item" href="{{ route('user.register') }}">@lang('Register')</a></li>
+                                    @else
+                                        <li><a class="dropdown-item" href="{{ route('user.home') }}">@lang('Dashboard')</a></li>
+                                        <li><a class="dropdown-item" href="{{ route('user.logout') }}">@lang('Logout')</a></li>
+                                    @endguest
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="login-registration-list__item">
+                            <a class="btn btn-buy-tickets" href="{{ route('lottery.tickets') }}">@lang('Buy Tickets')</a>
+                        </li>
                     </ul>
+
                     @if (gs()->multi_language)
                         @php
                             $language = App\Models\Language::all();
