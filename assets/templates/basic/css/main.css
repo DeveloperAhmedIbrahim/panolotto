@@ -2430,7 +2430,7 @@ input[type=number] {
 
     .nav-menu .nav-item {
         position: relative;
-        padding: 0 20px;
+        padding: 0 5px;
     }
 }
 
@@ -6339,8 +6339,8 @@ label.required:after {
         color: hsl(var(--black)) !important;
         font-family: var(--body-font);
         font-weight: 600;
-        font-size: 1rem;
-        padding: 12px 18px !important;
+        font-size: .9rem;
+        padding: 12px 14px !important;
         border-radius: 30px;
         transition: 0.2s linear;
     }
@@ -6531,3 +6531,199 @@ label.required:after {
     min-width: 100% !important;
 }
 /* ================= Header Redesign End ================= */
+
+/* ================= Panolotto Hero Redesign (mock match) ================= */
+.banner-content { position: relative; z-index: 2; }
+
+/* Badge */
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: hsl(var(--white) / 0.92);
+    color: hsl(var(--black));
+    padding: 8px 18px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 22px;
+    box-shadow: 0 4px 12px hsl(var(--black) / 0.08);
+}
+.hero-badge i { color: hsl(var(--base)); font-size: 15px; }
+
+/* Heading dark (mock jaisa) + optional white accent word */
+.banner-content__title { color: hsl(var(--black)) !important; }
+.banner-content__title .text-highlight { color: hsl(var(--white)); }
+
+/* Description dark */
+.banner-content__desc {
+    max-width: 480px;
+    margin-top: 18px !important;
+    color: hsl(var(--black));
+    font-weight: 500;
+}
+
+/* Countdown */
+.hero-countdown-wrap { margin-top: 28px; }
+.hero-countdown__title {
+    display: block;
+    color: hsl(var(--black));
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 12px;
+}
+.hero-countdown { display: flex; gap: 12px; flex-wrap: wrap; }
+.hero-countdown__box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    background-color: hsl(var(--black));
+    border-radius: 12px;
+}
+.hero-countdown__num {
+    color: hsl(var(--white));
+    font-family: var(--heading-font);
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1;
+}
+.hero-countdown__label {
+    color: hsl(var(--white) / 0.7);
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+/* Arrow button */
+.banner-content__button { margin-top: 30px !important; }
+.hero-btn {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    padding: 13px 28px !important;
+    font-size: 16px !important;
+}
+.hero-btn i { transition: 0.2s linear; }
+.hero-btn:hover i { transform: translateX(4px); }
+
+/* Secure line */
+.hero-secure {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 18px;
+    color: hsl(var(--black));
+    font-size: 14px;
+    font-weight: 500;
+}
+.hero-secure i { font-size: 16px; }
+
+/* Powered by XRP badge */
+.hero-powered {
+    position: absolute;
+    right: 60px;
+    bottom: 45px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background-color: hsl(var(--black));
+    color: hsl(var(--white) / 0.85);
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 500;
+    z-index: 3;
+}
+.hero-powered b { color: hsl(var(--white)); font-weight: 700; }
+
+@media (max-width: 991px) { .hero-powered { display: none; } }
+@media (max-width: 575px) { .hero-countdown__box { width: 62px; height: 62px; } }
+
+/* ================= Stats strip (overview) — mock match ================= */
+.overview-wrapper {
+    background-color: hsl(var(--white)) !important;
+    border-bottom: none;
+    border-radius: 20px !important;
+    box-shadow: 0 10px 40px hsl(var(--black) / 0.08);
+    padding: 30px 25px;
+}
+
+/* icon circle: soft peach bg + orange glyph (dark circle hataya) */
+.overview-card__icon {
+    background: hsl(var(--base) / 0.12) !important;
+    color: hsl(var(--base)) !important;
+    border: none !important;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    padding: 0;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+/* numbers dark bold (mock jaisa) */
+.overview-card .amount {
+    color: hsl(var(--black)) !important;
+    font-size: 26px;
+    font-weight: 800;
+    margin-bottom: 2px;
+}
+
+/* subtext soft grey */
+.overview-card .overview-card__content p {
+    color: hsl(var(--black) / 0.55) !important;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+/* ===== Powered by XRP — bara + hide/cut fix ===== */
+.hero-powered {
+    right: 45px;
+    bottom: 120px;        /* stats card ke overlap se upar utha diya */
+    padding: 11px 22px;
+    font-size: 15px;
+}
+.hero-powered b { font-size: 17px; }
+/* ================= End ================= */
+
+/* ===== Stats strip content (4 vanity stats) — mock match ===== */
+.overview-card .amount {
+    color: hsl(var(--black)) !important;
+    font-size: 26px;
+    font-weight: 800;
+    margin-bottom: 4px;
+    line-height: 1.1;
+}
+.overview-card .overview-card__content p.stat-label {
+    color: hsl(var(--black)) !important;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+.overview-card .overview-card__content p.stat-sub {
+    color: hsl(var(--black) / 0.5) !important;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* subtle vertical dividers between cards (desktop) */
+@media (min-width: 992px) {
+    .overview-wrapper .overview-item:not(:first-child)::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 1px;
+        height: 55px;
+        background-color: hsl(var(--black) / 0.08);
+    }
+}
+/* ===== End ===== */
+/* ================= Hero Redesign End ================= */

@@ -16,12 +16,13 @@
                             @lang('Lotteries') <i class="las la-angle-down nav-caret"></i>
                         </a>
                         <ul class="nav-dropdown">
-                            <li class="nav-dropdown__item">
-                                <a class="nav-dropdown__link" href="{{ route('lottery.tickets') }}">Mega XRP Jackpot</a>
-                            </li>
-                            <li class="nav-dropdown__item">
-                                <a class="nav-dropdown__link" href="{{ route('lottery.tickets') }}">Daily XRP Draw</a>
-                            </li>
+                            @foreach($lotteries as $lottery)
+                                @if (@$lottery->activePhase)
+                                    <li class="nav-dropdown__item">
+                                        <a class="nav-dropdown__link" href="{{ route('lottery.play', ['slug' => slug($lottery->name), 'id' => $lottery->id]) }}">{{ __($lottery->name) }}</a>
+                                    </li>
+                                @endif
+                            @endforeach
                         </ul>
                     </li>
 
@@ -40,8 +41,21 @@
                     <li class="nav-item">
                         <a class="nav-link {{ menuActive('results') }}" href="{{ route('results') }}">@lang('Results')</a>
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link" href="https://www.youtube.com/playlist?list=PLACPz8AooxS1cJ6LLWpufLkad_kFDAYcN">@lang('Tutorial Videos')</a>
+                        <a class="nav-link" href="https://www.youtube.com/playlist?list=PLACPz8AooxS1cJ6LLWpufLkad_kFDAYcN">@lang('How It Works')</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {{ menuActive('about') }}" href="#">@lang('About Us')</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {{ menuActive('faqs') }}" href="{{ url('faqs') }}">@lang('FAQ')</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {{ menuActive('contact') }}" href="{{ url('contact') }}">@lang('Contact')</a>
                     </li>
                 </ul>
 

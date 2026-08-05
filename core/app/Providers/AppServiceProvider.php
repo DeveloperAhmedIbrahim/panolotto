@@ -8,6 +8,7 @@ use App\Models\AdminNotification;
 use App\Models\CoinRequest;
 use App\Models\Deposit;
 use App\Models\Frontend;
+use App\Models\Lottery;
 use App\Models\Phase;
 use App\Models\SupportTicket;
 use App\Models\User;
@@ -77,6 +78,16 @@ class AppServiceProvider extends ServiceProvider
             $seo = Frontend::where('data_keys', 'seo.data')->first();
             $view->with([
                 'seo' => $seo ? $seo->data_values : $seo,
+            ]);
+        });
+
+        view()->composer('templates.basic.partials.header', function($view) {
+            $lotteries = Lottery::active()->whereHas('winningSettings')->whereHas('phases', function ($query) {
+                $query->active()->whereDate('draw_date', '>=', now())->where('is_set_winner', Status::NO);
+            })->with('winningSettings', 'activePhase')->get();
+
+            $view->with([
+                'lotteries' => $lotteries
             ]);
         });
 
