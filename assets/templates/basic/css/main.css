@@ -6727,3 +6727,97 @@ label.required:after {
 }
 /* ===== End ===== */
 /* ================= Hero Redesign End ================= */
+
+/* ================= Lottery Cards Redesign (mock match) ================= */
+
+/* 9 themes — sirf main color; bg/soft/border color-mix se derive */
+.lottery-theme-1 { --lc: #7C3AED; } /* violet (mock) */
+.lottery-theme-2 { --lc: #16A34A; } /* green  (mock) */
+.lottery-theme-3 { --lc: #2563EB; } /* blue   (mock) */
+.lottery-theme-4 { --lc: #DB2777; } /* pink   */
+.lottery-theme-5 { --lc: #EA580C; } /* orange */
+.lottery-theme-6 { --lc: #0D9488; } /* teal   */
+.lottery-theme-7 { --lc: #4F46E5; } /* indigo */
+.lottery-theme-8 { --lc: #D97706; } /* amber  */
+.lottery-theme-9 { --lc: #DC2626; } /* red    */
+
+.lottery-card {
+    --lc-bg:     color-mix(in srgb, var(--lc) 5%, #fff);
+    --lc-soft:   color-mix(in srgb, var(--lc) 13%, #fff);
+    --lc-border: color-mix(in srgb, var(--lc) 18%, #fff);
+    position: relative;
+    background-color: var(--lc-bg);
+    border: 1px solid var(--lc-border);
+    border-radius: 18px;
+    padding: 28px 22px;
+    text-align: center;
+    height: 100%;
+    transition: 0.25s ease;
+}
+.lottery-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 34px hsl(var(--black) / 0.10);
+}
+
+.lottery-card__badge {
+    position: absolute;
+    top: 16px; left: 16px;
+    display: inline-flex; align-items: center; gap: 6px;
+    background-color: var(--lc);
+    color: #fff; font-size: 12px; font-weight: 600;
+    padding: 5px 12px; border-radius: 30px;
+}
+
+.lottery-card__illustration { color: var(--lc); width: 118px; margin: 6px auto 14px; }
+.lottery-card__illustration svg { width: 100%; height: auto; display: block; }
+
+.lottery-card__name { color: hsl(var(--black)); font-size: 20px; font-weight: 700; margin-bottom: 12px; }
+.lottery-card__win-label { color: hsl(var(--black) / 0.5); font-size: 14px; margin-bottom: 2px; }
+.lottery-card__prize { color: hsl(var(--black)); font-size: 30px; font-weight: 800; margin-bottom: 20px; }
+
+/* --- Countdown: template ke base classes ko override (JS inhi ko fill karta hai) --- */
+.lottery-card .countdown { margin: 0 0 20px; }
+.lottery-card .countdown__menu {
+    display: flex; justify-content: center; gap: 8px;
+    max-width: none; margin: 0; padding: 0; list-style: none;
+}
+.lottery-card .countdown__list {
+    flex: 1; max-width: 62px;
+    display: flex; flex-direction: column; align-items: center; gap: 3px;
+    background-color: var(--lc-soft);
+    border-radius: 10px; padding: 10px 4px;
+}
+/* purana 50x50 white box + colon dots reset */
+.lottery-card .countdown__time {
+    width: auto; height: auto; margin: 0;
+    background-color: transparent; border-radius: 0; display: block;
+    color: hsl(var(--black)) !important;
+    font-family: var(--heading-font); font-size: 18px; font-weight: 700; line-height: 1;
+}
+.lottery-card .countdown__time::before,
+.lottery-card .countdown__time::after { display: none !important; }
+.lottery-card .lottery-card__unit { color: hsl(var(--black) / 0.55); font-size: 11px; font-weight: 500; }
+
+/* --- Prize pool / ticket price row --- */
+.lottery-card__meta {
+    display: flex; justify-content: space-between; align-items: flex-start; gap: 10px;
+    padding: 14px 4px; margin-bottom: 18px;
+    border-top: 1px dashed hsl(var(--black) / 0.12);
+    border-bottom: 1px dashed hsl(var(--black) / 0.12);
+}
+.lottery-card__meta-col { display: flex; flex-direction: column; gap: 3px; }
+.lottery-card__meta-label { color: hsl(var(--black) / 0.5); font-size: 12px; font-weight: 500; }
+.lottery-card__meta-value { color: hsl(var(--black)); font-size: 15px; font-weight: 700; }
+
+/* --- Button --- */
+.lottery-card__btn {
+    display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%;
+    background-color: var(--lc-soft); color: var(--lc) !important;
+    border: 1px solid var(--lc); border-radius: 10px;
+    padding: 12px 18px; font-family: var(--body-font); font-weight: 600; font-size: 15px;
+    transition: 0.2s ease;
+}
+.lottery-card__btn i { transition: 0.2s ease; }
+.lottery-card__btn:hover { background-color: var(--lc); color: #fff !important; }
+.lottery-card__btn:hover i { transform: translateX(4px); }
+/* ================= Lottery Cards End ================= */
