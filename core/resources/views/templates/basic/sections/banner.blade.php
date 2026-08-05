@@ -6,7 +6,7 @@
     <div class="banner-section__shape">
         <img alt="" src="{{ getImage($activeTemplateTrue . 'images/shapes/banner-shape.png') }}">
     </div>
-    <span class="hero-powered">@lang('Powered by') <b>&#10005; XRP</b></span>
+    <span class="hero-powered">@lang('Powered by') <b>XRP</b></span>
     <div class="container">
         <div class="row align-items-center gy-4">
             <div class="col-lg-6 col-sm-7 col-xsm-8">
