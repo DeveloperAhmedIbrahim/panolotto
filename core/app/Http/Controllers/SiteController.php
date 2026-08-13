@@ -37,7 +37,9 @@ class SiteController extends Controller
         $seoContents = $sections->seo_content;
         $seoImage    = @$seoContents->image ? getImage(getFilePath('seo') . '/' . @$seoContents->image, getFileSize('seo')) : null;
         $heroCounter = HeroCounter::first();
-        return view('Template::home', compact('pageTitle', 'sections', 'seoContents', 'seoImage', 'heroCounter'));
+        $results   = Phase::with('lottery:id,name,image,price', 'lottery.winningSettings')->completed()->orderBy('draw_at', 'desc')->limit(10)->get();
+
+        return view('Template::home', compact('pageTitle', 'sections', 'seoContents', 'seoImage', 'heroCounter', 'results'));
     }
 
     public function lotteryTickets()
@@ -48,9 +50,10 @@ class SiteController extends Controller
             $query->active()->whereDate('draw_date', '>=', now())->where('is_set_winner', Status::NO);
         })->with('winningSettings', 'activePhase')->paginate(getPaginate());
 
+        $results   = Phase::with('lottery:id,name,image,price', 'lottery.winningSettings')->completed()->orderBy('draw_at', 'desc')->limit(10)->get();
         $sections  = Page::where('tempname', activeTemplate())->where('slug', '/lottery-tickets')->first();
 
-        return view('Template::lottery.list', compact('pageTitle', 'lotteries', 'sections'));
+        return view('Template::lottery.list', compact('pageTitle', 'lotteries', 'sections', 'results'));
     }
 
     public function playLottery($slug, $id)
@@ -105,14 +108,14 @@ class SiteController extends Controller
         $sections = $page->secs;
         $seoContents = $page->seo_content;
         $seoImage = @$seoContents->image ? getImage(getFilePath('seo') . '/' . @$seoContents->image, getFileSize('seo')) : null;
-        
+
         $stream = null;
         $streams = null;
         if($slug == "livedraw") {
             $stream = ActiveStream::find(1);
             $streams = Recording::all();
         }
-        
+
         return view('Template::pages', compact('pageTitle', 'sections', 'seoContents', 'seoImage', 'stream', 'streams'));
     }
 

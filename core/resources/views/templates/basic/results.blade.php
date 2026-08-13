@@ -17,12 +17,14 @@
                         <thead>
                             <tr>
                                 <th>@lang('Lottery')</th>
-                                <th>@lang('Draw At')</th>
+                                <th>@lang('Draw ID')</th>
+                                <th>@lang('Date & Time')</th>
                                 <th>@lang('Winning Numbers')</th>
+                                <th>@lang('Winning Amount')</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($results as $result)
+                            @forelse ($results as $index => $result)
                                 <tr>
                                     <td data-label="Lottery">
                                         <div class="user">
@@ -32,34 +34,26 @@
                                                 </div>
                                                 <div class="user__content">
                                                     <h6 class="m-0 title">{{ __($result->lottery->name) }}</h6>
-                                                    <p class="m-0 sm-text text-clr">
-                                                        {{ showAmount($result->lottery->maxPrize()) }} {{ gs()->cur_text }}
-                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
                                     </td>
-                                    <td data-label="Draw At">
+                                    <td data-label="Draw ID">
+                                        {{ "#$result->id" }}
+                                    </td>
+                                    <td data-label="Date & Time">
                                         <p class="m-0 sm-text text-clr">{{ showDateTime($result->draw_at, 'd M, Y H:i A') }}</p>
                                     </td>
                                     <td data-label="Winning Numbers">
-                                        <ul class="list list--row flex-wrap justify-content-end gap-1">
-                                            @foreach ($result->winning_normal_balls as $winningNormalBall)
-                                                <li>
-                                                    <span class="result-card__number result-card__number--light">{{ $winningNormalBall }}</span>
-                                                </li>
-                                            @endforeach
-                                            @foreach ($result->winning_power_balls as $winningPowerBall)
-                                                <li>
-                                                    <span class="result-card__number result-card__number--light active">{{ $winningPowerBall }}</span>
-                                                </li>
-                                            @endforeach
-                                        </ul>
+                                        <x-winning-numbers :index=$index :result=$result />
+                                    </td>
+                                    <td data-label="Winning Amount">
+                                        {{ showAmount($result->lottery->maxPrize()) }}
                                     </td>
                                 </tr>
                             @empty
                                 <tr>
-                                    <td class="text-center" colspan="3">
+                                    <td class="text-center" colspan="5">
                                         @lang('There is no results found')
                                     </td>
                                 </tr>
