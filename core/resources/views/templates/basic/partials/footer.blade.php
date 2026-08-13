@@ -51,11 +51,11 @@
         </div>
 
         <!-- right: visitor counter (keeps script here so injected markup appears here) -->
-        <div class="visitor-counter-box" aria-hidden="false">
+        {{-- <div class="visitor-counter-box" aria-hidden="false">
             <!-- FreeVisitorCounters embed (placed here to render in this spot) -->
             <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=43116cbedd0717d8d769f5108762c9a2040e781f'></script>
             <script type="text/javascript" src="https://freevisitorcounters.com/en/home/counter/1444721/t/0"></script>
-        </div>
+        </div> --}}
     </div>
 </div>
 

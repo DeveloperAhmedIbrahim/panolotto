@@ -2436,7 +2436,7 @@ input[type=number] {
 
 @media screen and (min-width: 992px) and (max-width: 1399px) {
     .nav-menu .nav-item {
-        padding: 0 15px;
+        padding: 0 6px;
     }
 }
 
@@ -2456,11 +2456,11 @@ input[type=number] {
     border-top-right-radius: 5px;
 }
 
-.header.fixed-header .nav-menu .nav-item .nav-link.active{
+.header.fixed-header .nav-menu .nav-item .nav-link.active {
     background-color: transparent;
 }
 
-.header .nav-menu .nav-item .nav-link:hover{
+.header .nav-menu .nav-item .nav-link:hover {
     background-color: transparent;
 }
 
@@ -3212,7 +3212,7 @@ input[type=number] {
 }
 
 .banner-content__button {
-    margin-top: 20px;    
+    margin-top: 20px;
 }
 
 .banner-content__button a {
@@ -6086,14 +6086,15 @@ label.required:after {
     background-color: hsl(var(--base)) !important;
     color: hsl(var(--white)) !important;
 }
+
 .form--control[type=file]::file-selector-button:hover {
     background-color: hsl(var(--base));
     color: hsl(var(--white));
 }
 
-.removeFile.bg--danger i{
+.removeFile.bg--danger i {
     color: hsl(var(--white)) !important;
-    
+
 }
 
 .overview-section {
@@ -6163,7 +6164,8 @@ label.required:after {
         -ms-border-radius: 8px;
         -o-border-radius: 8px;
     }
-    .banner-content{
+
+    .banner-content {
         margin-top: 100px;
     }
 }
@@ -6321,11 +6323,13 @@ label.required:after {
     padding: .1875rem .4375rem;
 }
 
-.btn-auth, .btn--base.outline.btn-auth{
+.btn-auth,
+.btn--base.outline.btn-auth {
     border: 2px solid white !important;
 }
 
-.btn-auth:hover, .btn-auth.btn--base.outline:hover{
+.btn-auth:hover,
+.btn-auth.btn--base.outline:hover {
     border: 2px solid white !important;
     color: white !important;
 
@@ -6339,8 +6343,8 @@ label.required:after {
         color: hsl(var(--black)) !important;
         font-family: var(--body-font);
         font-weight: 600;
-        font-size: .9rem;
-        padding: 12px 14px !important;
+        font-size: .8rem;
+        padding: 8px 10px !important;
         border-radius: 30px;
         transition: 0.2s linear;
     }
@@ -6366,6 +6370,7 @@ label.required:after {
     color: hsl(var(--white)) !important;
     background-color: transparent !important;
 }
+
 .header.fixed-header .nav-menu .nav-item .nav-link.active,
 .header.fixed-header .nav-menu .nav-item .nav-link:hover {
     color: hsl(var(--black)) !important;
@@ -6394,10 +6399,12 @@ label.required:after {
     background-color: hsl(var(--white)) !important;
     border-color: hsl(var(--black) / 0.25) !important;
 }
+
 .top-button .btn-account .la-user-circle {
     font-size: 20px;
     line-height: 1;
 }
+
 .top-button .btn-account.dropdown-toggle::after {
     margin-left: 2px;
     vertical-align: middle;
@@ -6412,6 +6419,7 @@ label.required:after {
     min-width: 170px;
     margin-top: 8px;
 }
+
 .account-dropdown__menu .dropdown-item {
     border-radius: 6px;
     padding: 9px 12px;
@@ -6419,6 +6427,7 @@ label.required:after {
     font-weight: 500;
     color: hsl(var(--black));
 }
+
 .account-dropdown__menu .dropdown-item:hover {
     background-color: hsl(var(--base) / 0.12);
     color: hsl(var(--base));
@@ -6437,6 +6446,7 @@ label.required:after {
     line-height: 1;
     box-shadow: 0 4px 12px hsl(var(--black) / 0.15);
 }
+
 .top-button .btn-buy-tickets:hover {
     background-color: hsl(var(--dark)) !important;
     color: hsl(var(--white)) !important;
@@ -6447,6 +6457,7 @@ label.required:after {
 .header.fixed-header .top-button .btn-buy-tickets {
     border-color: hsl(var(--white) / 0.3) !important;
 }
+
 @media (max-width: 991px) {
     .top-button .btn-buy-tickets {
         border-color: hsl(var(--white) / 0.3) !important;
@@ -6455,13 +6466,16 @@ label.required:after {
 
 /* ===== Lotteries hover dropdown (nav-link style, sirf chevron) ===== */
 @media (min-width: 992px) {
-    .nav-item.has-dropdown { position: relative; }
+    .nav-item.has-dropdown {
+        position: relative;
+    }
 
     .nav-item.has-dropdown .nav-caret {
         font-size: 12px;
         margin-left: 5px;
         transition: 0.2s linear;
     }
+
     .nav-item.has-dropdown:hover .nav-caret {
         transform: rotate(180deg);
     }
@@ -6482,6 +6496,7 @@ label.required:after {
         transition: 0.25s ease;
         z-index: 999;
     }
+
     /* invisible bridge — hover gap me drop na ho */
     .nav-item.has-dropdown .nav-dropdown::before {
         content: "";
@@ -6491,11 +6506,13 @@ label.required:after {
         width: 100%;
         height: 14px;
     }
+
     .nav-item.has-dropdown:hover .nav-dropdown {
         opacity: 1;
         visibility: visible;
         transform: translateY(0);
     }
+
     .nav-dropdown__item .nav-dropdown__link {
         display: block;
         padding: 9px 12px;
@@ -6505,6 +6522,7 @@ label.required:after {
         font-size: 14px;
         font-weight: 500;
     }
+
     .nav-dropdown__item .nav-dropdown__link:hover {
         background-color: hsl(var(--base) / 0.12);
         color: hsl(var(--base)) !important;
@@ -6518,6 +6536,7 @@ label.required:after {
         padding-left: 15px;
         margin: 5px 0 0 0;
     }
+
     .nav-dropdown__item .nav-dropdown__link {
         display: block;
         padding: 8px 0;
@@ -6530,10 +6549,14 @@ label.required:after {
 .account-dropdown__menu {
     min-width: 100% !important;
 }
+
 /* ================= Header Redesign End ================= */
 
 /* ================= Panolotto Hero Redesign (mock match) ================= */
-.banner-content { position: relative; z-index: 2; }
+.banner-content {
+    position: relative;
+    z-index: 2;
+}
 
 /* Badge */
 .hero-badge {
@@ -6549,11 +6572,20 @@ label.required:after {
     margin-bottom: 22px;
     box-shadow: 0 4px 12px hsl(var(--black) / 0.08);
 }
-.hero-badge i { color: hsl(var(--base)); font-size: 15px; }
+
+.hero-badge i {
+    color: hsl(var(--base));
+    font-size: 15px;
+}
 
 /* Heading dark (mock jaisa) + optional white accent word */
-.banner-content__title { color: hsl(var(--black)) !important; }
-.banner-content__title .text-highlight { color: hsl(var(--white)); }
+.banner-content__title {
+    color: hsl(var(--black)) !important;
+}
+
+.banner-content__title .text-highlight {
+    color: hsl(var(--white));
+}
 
 /* Description dark */
 .banner-content__desc {
@@ -6564,7 +6596,10 @@ label.required:after {
 }
 
 /* Countdown */
-.hero-countdown-wrap { margin-top: 28px; }
+.hero-countdown-wrap {
+    margin-top: 28px;
+}
+
 .hero-countdown__title {
     display: block;
     color: hsl(var(--black));
@@ -6572,7 +6607,13 @@ label.required:after {
     font-size: 15px;
     margin-bottom: 12px;
 }
-.hero-countdown { display: flex; gap: 12px; flex-wrap: wrap; }
+
+.hero-countdown {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
 .hero-countdown__box {
     display: flex;
     flex-direction: column;
@@ -6583,6 +6624,7 @@ label.required:after {
     background-color: hsl(var(--black));
     border-radius: 12px;
 }
+
 .hero-countdown__num {
     color: hsl(var(--white));
     font-family: var(--heading-font);
@@ -6590,6 +6632,7 @@ label.required:after {
     font-weight: 700;
     line-height: 1;
 }
+
 .hero-countdown__label {
     color: hsl(var(--white) / 0.7);
     font-size: 12px;
@@ -6597,7 +6640,10 @@ label.required:after {
 }
 
 /* Arrow button */
-.banner-content__button { margin-top: 30px !important; }
+.banner-content__button {
+    margin-top: 30px !important;
+}
+
 .hero-btn {
     display: inline-flex !important;
     align-items: center;
@@ -6606,8 +6652,14 @@ label.required:after {
     padding: 13px 28px !important;
     font-size: 16px !important;
 }
-.hero-btn i { transition: 0.2s linear; }
-.hero-btn:hover i { transform: translateX(4px); }
+
+.hero-btn i {
+    transition: 0.2s linear;
+}
+
+.hero-btn:hover i {
+    transform: translateX(4px);
+}
 
 /* Secure line */
 .hero-secure {
@@ -6619,7 +6671,10 @@ label.required:after {
     font-size: 14px;
     font-weight: 500;
 }
-.hero-secure i { font-size: 16px; }
+
+.hero-secure i {
+    font-size: 16px;
+}
 
 /* Powered by XRP badge */
 .hero-powered {
@@ -6637,10 +6692,24 @@ label.required:after {
     font-weight: 500;
     z-index: 3;
 }
-.hero-powered b { color: hsl(var(--white)); font-weight: 700; }
 
-@media (max-width: 991px) { .hero-powered { display: none; } }
-@media (max-width: 575px) { .hero-countdown__box { width: 62px; height: 62px; } }
+.hero-powered b {
+    color: hsl(var(--white));
+    font-weight: 700;
+}
+
+@media (max-width: 991px) {
+    .hero-powered {
+        display: none;
+    }
+}
+
+@media (max-width: 575px) {
+    .hero-countdown__box {
+        width: 62px;
+        height: 62px;
+    }
+}
 
 /* ================= Stats strip (overview) — mock match ================= */
 .overview-wrapper {
@@ -6685,11 +6754,16 @@ label.required:after {
 /* ===== Powered by XRP — bara + hide/cut fix ===== */
 .hero-powered {
     right: 45px;
-    bottom: 120px;        /* stats card ke overlap se upar utha diya */
+    bottom: 120px;
+    /* stats card ke overlap se upar utha diya */
     padding: 11px 22px;
     font-size: 15px;
 }
-.hero-powered b { font-size: 17px; }
+
+.hero-powered b {
+    font-size: 17px;
+}
+
 /* ================= End ================= */
 
 /* ===== Stats strip content (4 vanity stats) — mock match ===== */
@@ -6700,12 +6774,14 @@ label.required:after {
     margin-bottom: 4px;
     line-height: 1.1;
 }
+
 .overview-card .overview-card__content p.stat-label {
     color: hsl(var(--black)) !important;
     font-size: 16px;
     font-weight: 700;
     margin-bottom: 2px;
 }
+
 .overview-card .overview-card__content p.stat-sub {
     color: hsl(var(--black) / 0.5) !important;
     font-size: 14px;
@@ -6725,25 +6801,62 @@ label.required:after {
         background-color: hsl(var(--black) / 0.08);
     }
 }
+
 /* ===== End ===== */
 /* ================= Hero Redesign End ================= */
 
 /* ================= Lottery Cards Redesign (mock match) ================= */
 
 /* 9 themes — sirf main color; bg/soft/border color-mix se derive */
-.lottery-theme-1 { --lc: #7C3AED; } /* violet (mock) */
-.lottery-theme-2 { --lc: #16A34A; } /* green  (mock) */
-.lottery-theme-3 { --lc: #2563EB; } /* blue   (mock) */
-.lottery-theme-4 { --lc: #DB2777; } /* pink   */
-.lottery-theme-5 { --lc: #EA580C; } /* orange */
-.lottery-theme-6 { --lc: #0D9488; } /* teal   */
-.lottery-theme-7 { --lc: #4F46E5; } /* indigo */
-.lottery-theme-8 { --lc: #D97706; } /* amber  */
-.lottery-theme-9 { --lc: #DC2626; } /* red    */
+.lottery-theme-1 {
+    --lc: #7C3AED;
+}
+
+/* violet (mock) */
+.lottery-theme-2 {
+    --lc: #16A34A;
+}
+
+/* green  (mock) */
+.lottery-theme-3 {
+    --lc: #2563EB;
+}
+
+/* blue   (mock) */
+.lottery-theme-4 {
+    --lc: #DB2777;
+}
+
+/* pink   */
+.lottery-theme-5 {
+    --lc: #EA580C;
+}
+
+/* orange */
+.lottery-theme-6 {
+    --lc: #0D9488;
+}
+
+/* teal   */
+.lottery-theme-7 {
+    --lc: #4F46E5;
+}
+
+/* indigo */
+.lottery-theme-8 {
+    --lc: #D97706;
+}
+
+/* amber  */
+.lottery-theme-9 {
+    --lc: #DC2626;
+}
+
+/* red    */
 
 .lottery-card {
-    --lc-bg:     color-mix(in srgb, var(--lc) 5%, #fff);
-    --lc-soft:   color-mix(in srgb, var(--lc) 13%, #fff);
+    --lc-bg: color-mix(in srgb, var(--lc) 5%, #fff);
+    --lc-soft: color-mix(in srgb, var(--lc) 13%, #fff);
     --lc-border: color-mix(in srgb, var(--lc) 18%, #fff);
     position: relative;
     background-color: var(--lc-bg);
@@ -6754,6 +6867,7 @@ label.required:after {
     height: 100%;
     transition: 0.25s ease;
 }
+
 .lottery-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 16px 34px hsl(var(--black) / 0.10);
@@ -6761,63 +6875,164 @@ label.required:after {
 
 .lottery-card__badge {
     position: absolute;
-    top: 16px; left: 16px;
-    display: inline-flex; align-items: center; gap: 6px;
+    top: 16px;
+    left: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
     background-color: var(--lc);
-    color: #fff; font-size: 12px; font-weight: 600;
-    padding: 5px 12px; border-radius: 30px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 30px;
 }
 
-.lottery-card__illustration { color: var(--lc); width: 118px; margin: 6px auto 14px; }
-.lottery-card__illustration svg { width: 100%; height: auto; display: block; }
+.lottery-card__illustration {
+    color: var(--lc);
+    width: 118px;
+    margin: 6px auto 14px;
+}
 
-.lottery-card__name { color: hsl(var(--black)); font-size: 20px; font-weight: 700; margin-bottom: 12px; }
-.lottery-card__win-label { color: hsl(var(--black) / 0.5); font-size: 14px; margin-bottom: 2px; }
-.lottery-card__prize { color: hsl(var(--black)); font-size: 30px; font-weight: 800; margin-bottom: 20px; }
+.lottery-card__illustration svg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.lottery-card__name {
+    color: hsl(var(--black));
+    font-size: 25px;
+    font-weight: bolder;
+    margin-bottom: 12px;
+}
+
+.lottery-card__win-label {
+    color: hsl(var(--black) / 0.5);
+    font-size: 14px;
+    margin-bottom: 2px;
+}
+
+.lottery-card__prize {
+    color: hsl(var(--black));
+    font-size: 30px;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
 
 /* --- Countdown: template ke base classes ko override (JS inhi ko fill karta hai) --- */
-.lottery-card .countdown { margin: 0 0 20px; }
+.lottery-card .countdown {
+    margin: 0 0 20px;
+}
+
 .lottery-card .countdown__menu {
-    display: flex; justify-content: center; gap: 8px;
-    max-width: none; margin: 0; padding: 0; list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
+
 .lottery-card .countdown__list {
-    flex: 1; max-width: 62px;
-    display: flex; flex-direction: column; align-items: center; gap: 3px;
+    flex: 1;
+    max-width: 62px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
     background-color: var(--lc-soft);
-    border-radius: 10px; padding: 10px 4px;
+    border-radius: 10px;
+    padding: 10px 4px;
 }
+
 /* purana 50x50 white box + colon dots reset */
 .lottery-card .countdown__time {
-    width: auto; height: auto; margin: 0;
-    background-color: transparent; border-radius: 0; display: block;
+    width: auto;
+    height: auto;
+    margin: 0;
+    background-color: transparent;
+    border-radius: 0;
+    display: block;
     color: hsl(var(--black)) !important;
-    font-family: var(--heading-font); font-size: 18px; font-weight: 700; line-height: 1;
+    font-family: var(--heading-font);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1;
 }
+
 .lottery-card .countdown__time::before,
-.lottery-card .countdown__time::after { display: none !important; }
-.lottery-card .lottery-card__unit { color: hsl(var(--black) / 0.55); font-size: 11px; font-weight: 500; }
+.lottery-card .countdown__time::after {
+    display: none !important;
+}
+
+.lottery-card .lottery-card__unit {
+    color: hsl(var(--black) / 0.55);
+    font-size: 11px;
+    font-weight: 500;
+}
 
 /* --- Prize pool / ticket price row --- */
 .lottery-card__meta {
-    display: flex; justify-content: space-between; align-items: flex-start; gap: 10px;
-    padding: 14px 4px; margin-bottom: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 14px 4px;
+    margin-bottom: 18px;
     border-top: 1px dashed hsl(var(--black) / 0.12);
     border-bottom: 1px dashed hsl(var(--black) / 0.12);
 }
-.lottery-card__meta-col { display: flex; flex-direction: column; gap: 3px; }
-.lottery-card__meta-label { color: hsl(var(--black) / 0.5); font-size: 12px; font-weight: 500; }
-.lottery-card__meta-value { color: hsl(var(--black)); font-size: 15px; font-weight: 700; }
+
+.lottery-card__meta-col {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    align-items: start;
+}
+
+.lottery-card__meta-label {
+    color: hsl(var(--black) / 0.5);
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.lottery-card__meta-value {
+    color: hsl(var(--black));
+    font-size: 15px;
+    font-weight: 700;
+}
 
 /* --- Button --- */
 .lottery-card__btn {
-    display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%;
-    background-color: var(--lc-soft); color: var(--lc) !important;
-    border: 1px solid var(--lc); border-radius: 10px;
-    padding: 12px 18px; font-family: var(--body-font); font-weight: 600; font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    background-color: var(--lc-soft);
+    color: var(--lc) !important;
+    border: 1px solid var(--lc);
+    border-radius: 10px;
+    padding: 12px 18px;
+    font-family: var(--body-font);
+    font-weight: 600;
+    font-size: 15px;
     transition: 0.2s ease;
 }
-.lottery-card__btn i { transition: 0.2s ease; }
-.lottery-card__btn:hover { background-color: var(--lc); color: #fff !important; }
-.lottery-card__btn:hover i { transform: translateX(4px); }
+
+.lottery-card__btn i {
+    transition: 0.2s ease;
+}
+
+.lottery-card__btn:hover {
+    background-color: var(--lc);
+    color: #fff !important;
+}
+
+.lottery-card__btn:hover i {
+    transform: translateX(4px);
+}
+
 /* ================= Lottery Cards End ================= */

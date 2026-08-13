@@ -106,11 +106,11 @@
             </div>
             <div class="col-lg-3 col-sm-6 overview-item">
                 <div class="overview-card">
-                    <div class="overview-card__icon">
-                        <i class="fab fa-bitcoin"></i>
+                    <div class="overview-card__icon" style="font-size: 20px; font-weight: bolder;">
+                        XRP
                     </div>
                     <div class="overview-card__content">
-                        <h3 class="amount">&#8383; 1.25M+</h3>
+                        <h3 class="amount">XRP 1.25M+</h3>
                         <p class="stat-label">Rewards Paid</p>
                         <p class="stat-sub">In XRP to our winners</p>
                     </div>

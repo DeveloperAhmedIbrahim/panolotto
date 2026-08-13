@@ -9,6 +9,9 @@
     </div>
 </section>
 @section('content')
+    <div class="container">
+        Choose your lucky numbers and win big with Panolotto.
+    </div>
     <div class="py-70">
         <div class="container">
             @if ($lotteries->count())

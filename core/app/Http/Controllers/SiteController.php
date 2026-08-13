@@ -44,7 +44,7 @@ class SiteController extends Controller
 
     public function lotteryTickets()
     {
-        $pageTitle = 'Lottery Tickets';
+        $pageTitle = 'Current Lotteries';
 
         $lotteries = Lottery::active()->whereHas('winningSettings')->whereHas('phases', function ($query) {
             $query->active()->whereDate('draw_date', '>=', now())->where('is_set_winner', Status::NO);
